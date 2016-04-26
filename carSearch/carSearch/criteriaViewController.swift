@@ -45,7 +45,7 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
     
     
     
-    //UIPickerViewDelegate Methods
+    //MARK: UIPickerViewDelegate Methods & setup
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -101,8 +101,30 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
         
     }
     
+//    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+//
+//        let tag = pickerView.tag
+//        
+//        if tag == 1 {
+//            let titleData = priceChoices[row]
+//        }
+//        else if tag == 2 {
+//            let titleData = performanceChoices[row]
+//        }
+//        else if tag == 3 {
+//            let titleData = fuelEfficiencyChoices[row]
+//        }
+//        else {let titleData = "titleData"}
+//        
+//        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0)!,NSForegroundColorAttributeName:UIColor.blueColor()])
+//        return myTitle
+//    }
     
     
+    
+    
+    
+    //MARK: slider delegates & setup
     @IBAction func sliderValueDidChange(sender: AnyObject) {
         
         priceImportance = Int(priceSlider.value)
