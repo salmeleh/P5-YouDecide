@@ -32,7 +32,7 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
     
     override func viewDidLoad() {
         pickerViewSetup()
-        
+        sliderValueDidChange()
         
     }
     
@@ -96,6 +96,25 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
     
     
     
+    @IBAction func sliderValueDidChange(sender: AnyObject) {
+        let tag = sender.tag
+        
+        if tag == 1 {
+            priceImportance = Int(priceSlider.value)
+            print(priceImportance)
+        }
+        else if tag == 2 {
+            performanceImportance = Int(performanceSlider.value)
+            print(performanceImportance)
+        }
+        else if tag == 3 {
+            fuelEfficiencyImportance = Int(performanceSlider.value)
+            print(fuelEfficiencyImportance)
+        }
+
+        
+    }
+
     
     
     

@@ -20,12 +20,30 @@
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xAV-TQ-zOL">
                                 <rect key="frame" x="50" y="202" width="500" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueDidChange:" destination="5Hs-xI-xGd" eventType="valueChanged" id="l6C-z2-Nqx"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UVf-0C-G6R">
+                                <rect key="frame" x="50" y="327" width="500" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueDidChange:" destination="5Hs-xI-xGd" eventType="valueChanged" id="2Yu-c5-xTz"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="EyZ-yF-ll4">
                                 <rect key="frame" x="50" y="466" width="500" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueDidChange:" destination="5Hs-xI-xGd" eventType="valueChanged" id="d4q-kz-V0E"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJW-cS-BYX">
                                 <rect key="frame" x="52" y="173" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Performance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vs-QY-gdg">
+                                <rect key="frame" x="52" y="298" width="99" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,6 +60,12 @@
                                     <constraint firstAttribute="width" constant="117" id="CJe-ss-rli"/>
                                 </constraints>
                             </pickerView>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9J-AN-xAB">
+                                <rect key="frame" x="431" y="278" width="117" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="2AU-S0-dsa"/>
+                                </constraints>
+                            </pickerView>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rhe-8O-BqZ">
                                 <rect key="frame" x="431" y="418" width="117" height="40"/>
                             </pickerView>
@@ -53,30 +77,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Search"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's important to you?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbN-cQ-aZt">
-                                <rect key="frame" x="142" y="112" width="316" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a value and importance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbN-cQ-aZt">
+                                <rect key="frame" x="124" y="94" width="352" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="316" id="tvS-oS-iQ5"/>
+                                    <constraint firstAttribute="width" constant="352" id="tvS-oS-iQ5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UVf-0C-G6R">
-                                <rect key="frame" x="50" y="327" width="500" height="31"/>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Performance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vs-QY-gdg">
-                                <rect key="frame" x="52" y="298" width="99" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9J-AN-xAB">
-                                <rect key="frame" x="431" y="278" width="117" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="117" id="2AU-S0-dsa"/>
-                                </constraints>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -92,7 +101,7 @@
                             <constraint firstItem="UVf-0C-G6R" firstAttribute="top" secondItem="3vs-QY-gdg" secondAttribute="bottom" constant="8" id="L0x-3B-unl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="k9J-AN-xAB" secondAttribute="trailing" constant="32" id="THR-T4-sf5"/>
                             <constraint firstItem="EyZ-yF-ll4" firstAttribute="top" secondItem="UVf-0C-G6R" secondAttribute="bottom" constant="109" id="Y6z-VZ-3fJ"/>
-                            <constraint firstItem="2Dh-Rc-DNC" firstAttribute="top" secondItem="GbN-cQ-aZt" secondAttribute="bottom" constant="8" id="YWv-sV-hgs"/>
+                            <constraint firstItem="2Dh-Rc-DNC" firstAttribute="top" secondItem="GbN-cQ-aZt" secondAttribute="bottom" constant="26" id="YWv-sV-hgs"/>
                             <constraint firstItem="Cbo-B1-a6g" firstAttribute="leading" secondItem="EyZ-yF-ll4" secondAttribute="leading" id="cyI-YD-lsc"/>
                             <constraint firstItem="xAV-TQ-zOL" firstAttribute="top" secondItem="SJW-cS-BYX" secondAttribute="bottom" constant="8" id="eF0-hf-Jh6"/>
                             <constraint firstItem="2Dh-Rc-DNC" firstAttribute="trailing" secondItem="xAV-TQ-zOL" secondAttribute="trailing" id="fUI-1y-DUC"/>
@@ -104,7 +113,7 @@
                             <constraint firstItem="UVf-0C-G6R" firstAttribute="centerX" secondItem="uHQ-6N-4N3" secondAttribute="centerX" id="nNz-dT-zRu"/>
                             <constraint firstItem="SJW-cS-BYX" firstAttribute="leading" secondItem="uHQ-6N-4N3" secondAttribute="leadingMargin" constant="32" id="nbj-mU-Ovv"/>
                             <constraint firstItem="EyZ-yF-ll4" firstAttribute="centerX" secondItem="uHQ-6N-4N3" secondAttribute="centerX" id="nsb-VI-PWD"/>
-                            <constraint firstItem="GbN-cQ-aZt" firstAttribute="top" secondItem="Ftw-uN-boR" secondAttribute="bottom" constant="48" id="pp4-A4-O8b"/>
+                            <constraint firstItem="GbN-cQ-aZt" firstAttribute="top" secondItem="Ftw-uN-boR" secondAttribute="bottom" constant="30" id="pp4-A4-O8b"/>
                             <constraint firstItem="3vs-QY-gdg" firstAttribute="leading" secondItem="UVf-0C-G6R" secondAttribute="leading" id="pyb-9R-njx"/>
                             <constraint firstItem="EyZ-yF-ll4" firstAttribute="top" secondItem="Cbo-B1-a6g" secondAttribute="bottom" constant="8" id="rV6-Bn-V8d"/>
                             <constraint firstItem="GbN-cQ-aZt" firstAttribute="centerX" secondItem="xAV-TQ-zOL" secondAttribute="centerX" id="vhz-w5-GMM"/>
