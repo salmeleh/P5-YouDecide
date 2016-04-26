@@ -70,12 +70,16 @@
                                 <rect key="frame" x="431" y="418" width="117" height="40"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIv-kn-BDD">
-                                <rect key="frame" x="263" y="552" width="74" height="28"/>
+                                <rect key="frame" x="263" y="547" width="74" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="74" id="nKW-wS-QQP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Search"/>
+                                <state key="normal" title="More..."/>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="5Hs-xI-xGd" eventType="touchUpInside" id="1rC-HA-mmF"/>
+                                    <segue destination="wCC-fu-Y1S" kind="show" id="fD1-6r-kkM"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a value and importance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbN-cQ-aZt">
                                 <rect key="frame" x="124" y="94" width="352" height="34"/>
@@ -112,12 +116,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="NWl-3p-eY1" secondAttribute="trailing" constant="32" id="2Zf-Qs-uBh"/>
                             <constraint firstItem="2Dh-Rc-DNC" firstAttribute="top" secondItem="Ftw-uN-boR" secondAttribute="bottom" constant="90" id="2tq-iG-3KB"/>
                             <constraint firstItem="k9J-AN-xAB" firstAttribute="leading" secondItem="rhe-8O-BqZ" secondAttribute="leading" id="6OQ-mj-1CY"/>
-                            <constraint firstItem="LIv-kn-BDD" firstAttribute="top" secondItem="EyZ-yF-ll4" secondAttribute="bottom" constant="56" id="75n-JL-3fu"/>
+                            <constraint firstItem="LIv-kn-BDD" firstAttribute="top" secondItem="EyZ-yF-ll4" secondAttribute="bottom" constant="51" id="75n-JL-3fu"/>
                             <constraint firstItem="xAV-TQ-zOL" firstAttribute="leading" secondItem="3vs-QY-gdg" secondAttribute="leading" id="AKF-SS-u2I"/>
                             <constraint firstItem="UVf-0C-G6R" firstAttribute="top" secondItem="xAV-TQ-zOL" secondAttribute="bottom" constant="95" id="Bt4-bC-Ozy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Dh-Rc-DNC" secondAttribute="trailing" constant="32" id="EnE-oj-vvE"/>
                             <constraint firstItem="k9J-AN-xAB" firstAttribute="trailing" secondItem="rhe-8O-BqZ" secondAttribute="trailing" id="HPk-kw-Nha"/>
-                            <constraint firstAttribute="bottom" secondItem="LIv-kn-BDD" secondAttribute="bottom" constant="20" symbolic="YES" id="KJS-EL-PW6"/>
+                            <constraint firstAttribute="bottom" secondItem="LIv-kn-BDD" secondAttribute="bottom" constant="15" id="KJS-EL-PW6"/>
                             <constraint firstItem="UVf-0C-G6R" firstAttribute="top" secondItem="3vs-QY-gdg" secondAttribute="bottom" constant="8" id="L0x-3B-unl"/>
                             <constraint firstItem="w6O-wP-44O" firstAttribute="top" secondItem="UVf-0C-G6R" secondAttribute="bottom" constant="8" id="MUa-2h-6zy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="k9J-AN-xAB" secondAttribute="trailing" constant="32" id="THR-T4-sf5"/>
@@ -159,11 +163,30 @@
                         <outlet property="priceImportanceLabel" destination="NWl-3p-eY1" id="0uJ-sy-SOi"/>
                         <outlet property="pricePickerView" destination="2Dh-Rc-DNC" id="Wql-Vu-yfV"/>
                         <outlet property="priceSlider" destination="xAV-TQ-zOL" id="oN7-IF-Mf2"/>
+                        <outlet property="searchButton" destination="LIv-kn-BDD" id="DiH-XG-w0K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pw3-nG-fGG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-16" y="-33"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="nn7-gY-pXn">
+            <objects>
+                <viewController id="wCC-fu-Y1S" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o4M-4q-Nby"/>
+                        <viewControllerLayoutGuide type="bottom" id="hzt-wb-JHz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YvG-Ye-C0O">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zF-rv-kea" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="698" y="-40"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="noh-H9-zv8">
@@ -192,7 +215,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="b1F-fu-poI"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="690" y="-33"/>
+            <point key="canvasLocation" x="1397" y="-33"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H8a-Vt-6dj">

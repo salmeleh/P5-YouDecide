@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		20E759E51CCEB767009BD304 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E759E41CCEB767009BD304 /* AppDelegate.swift */; };
-		20E759E71CCEB767009BD304 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E759E61CCEB767009BD304 /* ViewController.swift */; };
 		20E759EA1CCEB767009BD304 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E759E81CCEB767009BD304 /* Main.storyboard */; };
 		20E759EC1CCEB767009BD304 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E759EB1CCEB767009BD304 /* Assets.xcassets */; };
 		20E759EF1CCEB767009BD304 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E759ED1CCEB767009BD304 /* LaunchScreen.storyboard */; };
 		20E759FA1CCEB767009BD304 /* carSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E759F91CCEB767009BD304 /* carSearchTests.swift */; };
 		20E75A051CCEB767009BD304 /* carSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E75A041CCEB767009BD304 /* carSearchUITests.swift */; };
 		20E75A131CCEB964009BD304 /* criteriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E75A121CCEB964009BD304 /* criteriaViewController.swift */; };
+		20E75A151CCFA118009BD304 /* EdmundsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E75A141CCFA118009BD304 /* EdmundsConstants.swift */; };
+		20E75A171CCFA132009BD304 /* EdmundsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E75A161CCFA132009BD304 /* EdmundsClient.swift */; };
+		20E75A1A1CCFA49D009BD304 /* VehicleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E75A191CCFA49D009BD304 /* VehicleInfo.swift */; };
+		20E75A1C1CCFA6C0009BD304 /* Vehicles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E75A1B1CCFA6C0009BD304 /* Vehicles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,6 @@
 /* Begin PBXFileReference section */
 		20E759E11CCEB767009BD304 /* carSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = carSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E759E41CCEB767009BD304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20E759E61CCEB767009BD304 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		20E759E91CCEB767009BD304 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20E759EB1CCEB767009BD304 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20E759EE1CCEB767009BD304 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,10 @@
 		20E75A041CCEB767009BD304 /* carSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carSearchUITests.swift; sourceTree = "<group>"; };
 		20E75A061CCEB767009BD304 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20E75A121CCEB964009BD304 /* criteriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = criteriaViewController.swift; sourceTree = "<group>"; };
+		20E75A141CCFA118009BD304 /* EdmundsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EdmundsConstants.swift; path = Edmunds/EdmundsConstants.swift; sourceTree = "<group>"; };
+		20E75A161CCFA132009BD304 /* EdmundsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EdmundsClient.swift; path = Edmunds/EdmundsClient.swift; sourceTree = "<group>"; };
+		20E75A191CCFA49D009BD304 /* VehicleInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleInfo.swift; sourceTree = "<group>"; };
+		20E75A1B1CCFA6C0009BD304 /* Vehicles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vehicles.swift; path = Edmunds/Vehicles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +107,9 @@
 			children = (
 				20E759E81CCEB767009BD304 /* Main.storyboard */,
 				20E75A121CCEB964009BD304 /* criteriaViewController.swift */,
-				20E759E41CCEB767009BD304 /* AppDelegate.swift */,
-				20E759E61CCEB767009BD304 /* ViewController.swift */,
+				20E75A181CCFA13A009BD304 /* Edmunds */,
 				20E759EB1CCEB767009BD304 /* Assets.xcassets */,
+				20E759E41CCEB767009BD304 /* AppDelegate.swift */,
 				20E759ED1CCEB767009BD304 /* LaunchScreen.storyboard */,
 				20E759F01CCEB767009BD304 /* Info.plist */,
 			);
@@ -126,6 +132,17 @@
 				20E75A061CCEB767009BD304 /* Info.plist */,
 			);
 			path = carSearchUITests;
+			sourceTree = "<group>";
+		};
+		20E75A181CCFA13A009BD304 /* Edmunds */ = {
+			isa = PBXGroup;
+			children = (
+				20E75A161CCFA132009BD304 /* EdmundsClient.swift */,
+				20E75A141CCFA118009BD304 /* EdmundsConstants.swift */,
+				20E75A191CCFA49D009BD304 /* VehicleInfo.swift */,
+				20E75A1B1CCFA6C0009BD304 /* Vehicles.swift */,
+			);
+			name = Edmunds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +277,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				20E75A131CCEB964009BD304 /* criteriaViewController.swift in Sources */,
-				20E759E71CCEB767009BD304 /* ViewController.swift in Sources */,
+				20E75A151CCFA118009BD304 /* EdmundsConstants.swift in Sources */,
+				20E75A1C1CCFA6C0009BD304 /* Vehicles.swift in Sources */,
+				20E75A1A1CCFA49D009BD304 /* VehicleInfo.swift in Sources */,
 				20E759E51CCEB767009BD304 /* AppDelegate.swift in Sources */,
+				20E75A171CCFA132009BD304 /* EdmundsClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

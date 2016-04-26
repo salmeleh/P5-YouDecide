@@ -25,6 +25,7 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var performanceImportanceLabel: UILabel!
     @IBOutlet weak var fuelEfficiencyImportanceLabel: UILabel!
     
+    @IBOutlet weak var searchButton: UIButton!
     
     //picker view choices
     var priceChoices = [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
@@ -35,11 +36,24 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
     var priceSelection = 50000, performanceSelection = 10, fuelEfficiencySelection = 20
     var priceImportance = 5, performanceImportance = 5, fuelEfficiencyImportance = 5
     
+    
+    var ratio = 0
+    
+    
     override func viewDidLoad() {
         pickerViewSetup()
         importanceSetup()
         
         
+        
+    }
+    
+    
+    
+    
+    
+    
+    @IBAction func searchButtonPressed(sender: AnyObject) {
         
     }
     
