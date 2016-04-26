@@ -21,6 +21,11 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var performanceSlider: UISlider!
     @IBOutlet weak var fuelEfficiencySlider: UISlider!
     
+    @IBOutlet weak var priceImportanceLabel: UILabel!
+    @IBOutlet weak var performanceImportanceLabel: UILabel!
+    @IBOutlet weak var fuelEfficiencyImportanceLabel: UILabel!
+    
+    
     //picker view choices
     var priceChoices = [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
     var performanceChoices = [7, 8, 9, 10, 11, 12, 13, 14]
@@ -32,7 +37,9 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
     
     override func viewDidLoad() {
         pickerViewSetup()
-        sliderValueDidChange()
+        importanceSetup()
+        
+        
         
     }
     
@@ -97,26 +104,28 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
     
     
     @IBAction func sliderValueDidChange(sender: AnyObject) {
-        let tag = sender.tag
         
-        if tag == 1 {
-            priceImportance = Int(priceSlider.value)
-            print(priceImportance)
-        }
-        else if tag == 2 {
-            performanceImportance = Int(performanceSlider.value)
-            print(performanceImportance)
-        }
-        else if tag == 3 {
-            fuelEfficiencyImportance = Int(performanceSlider.value)
-            print(fuelEfficiencyImportance)
-        }
-
+        priceImportance = Int(priceSlider.value)
+        priceImportanceLabel.text = String(priceImportance)
+    
+        performanceImportance = Int(performanceSlider.value)
+        performanceImportanceLabel.text = String(performanceImportance)
+    
+        fuelEfficiencyImportance = Int(fuelEfficiencySlider.value)
+        fuelEfficiencyImportanceLabel.text = String(fuelEfficiencyImportance)
         
     }
 
     
-    
+    func importanceSetup() {
+        priceSlider.value = 5
+        performanceSlider.value = 5
+        fuelEfficiencySlider.value = 5
+        
+        priceImportanceLabel.text = "5"
+        performanceImportanceLabel.text = "5"
+        fuelEfficiencyImportanceLabel.text = "5"
+    }
     
     
     
