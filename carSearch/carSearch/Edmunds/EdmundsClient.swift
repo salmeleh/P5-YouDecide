@@ -22,16 +22,35 @@ class EdmundsClient: NSObject {
     }
     
     //MARK: Get Makes
-    func getMakes(completionHandler: (results: [VehicleInfo]?, error: String?) -> Void) {
-        let params = ["limit": 100, "order": "-updatedAt"]
-        let urlString = EdmundsClient.Constants.edmundsBaseURL + EdmundsClient.escapedParameters(params)
+    func getMakes(completionHandler: (result: [VehicleInfo]?, error: String?) -> Void) {
+        print("getMakes called")
+        let params = ["state": "new", "year": 2016, "fmt": "json", "api_key": EdmundsClient.Constants.APIkey]
+        let urlString = EdmundsClient.Constants.edmundsBaseURL + EdmundsClient.Methods.Makes + EdmundsClient.escapedParameters(params as! [String : AnyObject])
+        print(urlString)
 
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
-
         
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
-        
+            guard (error == nil) else {
+                completionHandler(result: nil, error: "Connection Error")
+                return
+            }
+            guard let data = data else {
+                completionHandler(result: nil, error: "No data was returned")
+                return
+            }
+            
+            print(response)
+            
+            let parsedResponse = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! [String:AnyObject]
+            if let response = parsedResponse["results"] as? [[String: AnyObject]]{
+                let vehicles = VehicleInfo.vehiclesFromDictionary(response)
+                //print(vehicles)
+                completionHandler(result: vehicles, error: "success")
+                return
+            }
+
         }
         task.resume()
     }

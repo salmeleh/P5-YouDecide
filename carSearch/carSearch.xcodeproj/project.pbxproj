@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				20E759E81CCEB767009BD304 /* Main.storyboard */,
-				20E75A121CCEB964009BD304 /* criteriaViewController.swift */,
+				20E75A1D1CCFB76F009BD304 /* Controller */,
 				20E75A181CCFA13A009BD304 /* Edmunds */,
 				20E759EB1CCEB767009BD304 /* Assets.xcassets */,
 				20E759E41CCEB767009BD304 /* AppDelegate.swift */,
@@ -143,6 +143,14 @@
 				20E75A1B1CCFA6C0009BD304 /* Vehicles.swift */,
 			);
 			name = Edmunds;
+			sourceTree = "<group>";
+		};
+		20E75A1D1CCFB76F009BD304 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				20E75A121CCEB964009BD304 /* criteriaViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

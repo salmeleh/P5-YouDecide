@@ -18,7 +18,7 @@ extension EdmundsClient {
     
     //MARK: Methods
     struct Methods {
-        static let Make = "make"
+        static let Makes = "makes"
         static let Model = "model"
         static let Style = "style"
     }

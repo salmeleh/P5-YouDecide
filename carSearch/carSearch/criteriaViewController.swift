@@ -54,7 +54,15 @@ class criteriaViewController : UIViewController, UIPickerViewDataSource, UIPicke
     
     
     @IBAction func searchButtonPressed(sender: AnyObject) {
-        
+        EdmundsClient.sharedInstance().getMakes() { (result, error) in
+            if result != nil {
+                dispatch_async(dispatch_get_main_queue()) {
+                    Vehicles.sharedInstance().vehicles = result!
+                    print(result)
+                }
+            }
+            else {}
+        }
     }
     
     
