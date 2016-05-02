@@ -53,24 +53,28 @@ class EdmundsClient: NSObject {
         
             //GUARD: Is the 'makes' key in the parsedResults?
             guard let makesDictionary = parsedResult["makes"] as? NSDictionary else {
-                print("Cannot find key 'makes' in \(parsedResult)")
+                print("Cannot find key 'makes' in parsedResult")
                 return
             }
             
             //GUARD: Is the 'makesCount' key in makesDictionary?
-            guard let totalMakesVal = (makesDictionary["makesCount"] as? NSString)?.integerValue else {
-                print("Cannot find key 'makesCount' in \(makesDictionary)")
+            guard let totalMakesVal = parsedResult["makesCount"] as? Int else {
+                print("Cannot find key 'makesCount' in parsedResult")
                 return
             }
             
-            if totalMakesVal > 0 {
-                guard let makesArray = makesDictionary["name"] as? [[String: AnyObject]] else {
-                    print("Cannot find key 'name' in \(makesDictionary)")
-                    return
-                }
-                print(makesArray)
+            print(totalMakesVal)
+            
+            
+            /* GUARD: Is the "make" key in makesDictionary? */
+            guard let idArray = makesDictionary["id"] as? [[String: AnyObject]] else {
+                print("Cannot find key 'id' in makesDictionary")
+                return
             }
             
+            let makeDictionary = idArray[0] as [String: AnyObject]
+            let makeName = makeDictionary["name"] as? String
+            print(makeName)
             
             
             
