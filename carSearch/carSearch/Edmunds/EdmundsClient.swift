@@ -44,7 +44,7 @@ class EdmundsClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                print(parsedResult)
+                //print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
@@ -62,17 +62,23 @@ class EdmundsClient: NSObject {
                 print("Cannot find key 'makesCount' in \(makesDictionary)")
                 return
             }
+            
+            if totalMakesVal > 0 {
+                guard let makesArray = makesDictionary["name"] as? [[String: AnyObject]] else {
+                    print("Cannot find key 'name' in \(makesDictionary)")
+                    return
+                }
+                print(makesArray)
+            }
+            
+            
+            
+            
+            
 
         }
         task.resume()
     }
-    
-    
-    
-    
-    
-    
-    
     
     
     
