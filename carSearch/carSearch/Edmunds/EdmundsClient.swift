@@ -26,7 +26,7 @@ class EdmundsClient: NSObject {
         print("getMakes called")
         let params = ["state": "new", "year": 2016, "fmt": "json", "api_key": EdmundsClient.Constants.APIkey]
         let urlString = EdmundsClient.Constants.edmundsBaseURL + EdmundsClient.Methods.Makes + EdmundsClient.escapedParameters(params as! [String : AnyObject])
-        print(urlString)
+        print("urlString: " + urlString)
 
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         
@@ -41,13 +41,25 @@ class EdmundsClient: NSObject {
                 return
             }
             
-            print(response)
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                print(parsedResult)
+            } catch {
+                parsedResult = nil
+                print("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+        
+            //GUARD: Is the 'makes' key in the parsedResults?
+            guard let makesDictionary = parsedResult["makes"] as? NSDictionary else {
+                print("Cannot find key 'makes' in \(parsedResult)")
+                return
+            }
             
-            let parsedResponse = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments) as! [String:AnyObject]
-            if let response = parsedResponse["results"] as? [[String: AnyObject]]{
-                let vehicles = VehicleInfo.vehiclesFromDictionary(response)
-                //print(vehicles)
-                completionHandler(result: vehicles, error: "success")
+            //GUARD: Is the 'makesCount' key in makesDictionary?
+            guard let totalMakesVal = (makesDictionary["makesCount"] as? NSString)?.integerValue else {
+                print("Cannot find key 'makesCount' in \(makesDictionary)")
                 return
             }
 
