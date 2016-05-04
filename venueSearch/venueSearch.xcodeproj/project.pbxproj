@@ -15,6 +15,9 @@
 		20B802FD1CDA42E900268C12 /* venueSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802FC1CDA42E900268C12 /* venueSearchTests.swift */; };
 		20B803081CDA42E900268C12 /* venueSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B803071CDA42E900268C12 /* venueSearchUITests.swift */; };
 		20B803171CDA46BA00268C12 /* VenueTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B803161CDA46BA00268C12 /* VenueTableView.swift */; };
+		20B803191CDA4FDF00268C12 /* SongKickClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B803181CDA4FDF00268C12 /* SongKickClient.swift */; };
+		20B8031C1CDA508A00268C12 /* SongKickConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B8031B1CDA508A00268C12 /* SongKickConstants.swift */; };
+		20B8031E1CDA586700268C12 /* MetroArea.Swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B8031D1CDA586700268C12 /* MetroArea.Swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		20B803071CDA42E900268C12 /* venueSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = venueSearchUITests.swift; sourceTree = "<group>"; };
 		20B803091CDA42E900268C12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20B803161CDA46BA00268C12 /* VenueTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableView.swift; sourceTree = "<group>"; };
+		20B803181CDA4FDF00268C12 /* SongKickClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickClient.swift; sourceTree = "<group>"; };
+		20B8031B1CDA508A00268C12 /* SongKickConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickConstants.swift; sourceTree = "<group>"; };
+		20B8031D1CDA586700268C12 /* MetroArea.Swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetroArea.Swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +106,12 @@
 			isa = PBXGroup;
 			children = (
 				20B802EB1CDA42E900268C12 /* Main.storyboard */,
-				20B802E71CDA42E900268C12 /* AppDelegate.swift */,
 				20B803151CDA467D00268C12 /* Controller */,
-				20B802EE1CDA42E900268C12 /* Assets.xcassets */,
+				20B8031A1CDA4FE300268C12 /* SongKick */,
 				20B802F01CDA42E900268C12 /* LaunchScreen.storyboard */,
+				20B802EE1CDA42E900268C12 /* Assets.xcassets */,
 				20B802F31CDA42E900268C12 /* Info.plist */,
+				20B802E71CDA42E900268C12 /* AppDelegate.swift */,
 			);
 			path = venueSearch;
 			sourceTree = "<group>";
@@ -134,6 +141,16 @@
 				20B803161CDA46BA00268C12 /* VenueTableView.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		20B8031A1CDA4FE300268C12 /* SongKick */ = {
+			isa = PBXGroup;
+			children = (
+				20B803181CDA4FDF00268C12 /* SongKickClient.swift */,
+				20B8031B1CDA508A00268C12 /* SongKickConstants.swift */,
+				20B8031D1CDA586700268C12 /* MetroArea.Swift */,
+			);
+			name = SongKick;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +287,9 @@
 				20B802EA1CDA42E900268C12 /* SearchViewController.swift in Sources */,
 				20B802E81CDA42E900268C12 /* AppDelegate.swift in Sources */,
 				20B803171CDA46BA00268C12 /* VenueTableView.swift in Sources */,
+				20B8031C1CDA508A00268C12 /* SongKickConstants.swift in Sources */,
+				20B8031E1CDA586700268C12 /* MetroArea.Swift in Sources */,
+				20B803191CDA4FDF00268C12 /* SongKickClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
