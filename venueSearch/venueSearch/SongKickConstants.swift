@@ -24,5 +24,18 @@ extension SongKickClient {
         
     }
     
+    //MARK: JSON Body Keys
+    struct JSONResponseKeys {
+        static let City = "city"
+        static let Country = "country"
+        static let Lat = "lat"
+        static let Lng = "lng"
+        static let State = "state"
+        static let MetroArea = "metroArea"
+        static let ID = "is"
+        static let URI = "uri"
+        static let DisplayName = "displayName"
+    }
+    
     
 }

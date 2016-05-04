@@ -44,13 +44,43 @@ class SongKickClient: NSObject {
             
             let parsedResult: AnyObject!
             do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                print(parsedResult)
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! [String : AnyObject]
+                //print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
                 return
             }
+            
+            guard let resultsPage = parsedResult["resultsPage"] as? [String: AnyObject] else {
+                print("Cannot find key 'resultsPage' in parsedResult")
+                return
+            }
+            //print(resultsPage)
+            
+            guard let totalLocations = resultsPage["totalEntries"] as? Int else {
+                print("Cannot find key 'totalEntries' in parsedResult")
+                return
+            }
+            
+            if totalLocations > 0 {
+                guard let locationDictionary = resultsPage["results"] as? [String : AnyObject] else {
+                    print("Cannot find key 'results' in resultsPage")
+                    return
+                }
+                print(locationDictionary)
+                
+                if let metroAreaDictionary = locationDictionary["metroArea"] as? [String : AnyObject] {
+                    //let metroAreas = MetroArea.metroAreasFromDictionary(metroAreaDictionary)
+                   // completionHandler(result: metroAreas, error: "success")
+                }
+                
+                
+                
+                
+            }
+            
+            
         }
         task.resume()
         
