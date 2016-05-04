@@ -44,7 +44,7 @@ class EdmundsClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-                //print(parsedResult)
+                print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
