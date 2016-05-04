@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		20B802E81CDA42E900268C12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802E71CDA42E900268C12 /* AppDelegate.swift */; };
-		20B802EA1CDA42E900268C12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802E91CDA42E900268C12 /* ViewController.swift */; };
+		20B802EA1CDA42E900268C12 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802E91CDA42E900268C12 /* SearchViewController.swift */; };
 		20B802ED1CDA42E900268C12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B802EB1CDA42E900268C12 /* Main.storyboard */; };
 		20B802EF1CDA42E900268C12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20B802EE1CDA42E900268C12 /* Assets.xcassets */; };
 		20B802F21CDA42E900268C12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B802F01CDA42E900268C12 /* LaunchScreen.storyboard */; };
 		20B802FD1CDA42E900268C12 /* venueSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802FC1CDA42E900268C12 /* venueSearchTests.swift */; };
 		20B803081CDA42E900268C12 /* venueSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B803071CDA42E900268C12 /* venueSearchUITests.swift */; };
+		20B803171CDA46BA00268C12 /* VenueTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B803161CDA46BA00268C12 /* VenueTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		20B802E41CDA42E900268C12 /* venueSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = venueSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B802E71CDA42E900268C12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20B802E91CDA42E900268C12 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		20B802E91CDA42E900268C12 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		20B802EC1CDA42E900268C12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20B802EE1CDA42E900268C12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20B802F11CDA42E900268C12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		20B803031CDA42E900268C12 /* venueSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = venueSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B803071CDA42E900268C12 /* venueSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = venueSearchUITests.swift; sourceTree = "<group>"; };
 		20B803091CDA42E900268C12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20B803161CDA46BA00268C12 /* VenueTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,9 @@
 		20B802E61CDA42E900268C12 /* venueSearch */ = {
 			isa = PBXGroup;
 			children = (
-				20B802E71CDA42E900268C12 /* AppDelegate.swift */,
-				20B802E91CDA42E900268C12 /* ViewController.swift */,
 				20B802EB1CDA42E900268C12 /* Main.storyboard */,
+				20B802E71CDA42E900268C12 /* AppDelegate.swift */,
+				20B803151CDA467D00268C12 /* Controller */,
 				20B802EE1CDA42E900268C12 /* Assets.xcassets */,
 				20B802F01CDA42E900268C12 /* LaunchScreen.storyboard */,
 				20B802F31CDA42E900268C12 /* Info.plist */,
@@ -123,6 +125,15 @@
 				20B803091CDA42E900268C12 /* Info.plist */,
 			);
 			path = venueSearchUITests;
+			sourceTree = "<group>";
+		};
+		20B803151CDA467D00268C12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				20B802E91CDA42E900268C12 /* SearchViewController.swift */,
+				20B803161CDA46BA00268C12 /* VenueTableView.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +267,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20B802EA1CDA42E900268C12 /* ViewController.swift in Sources */,
+				20B802EA1CDA42E900268C12 /* SearchViewController.swift in Sources */,
 				20B802E81CDA42E900268C12 /* AppDelegate.swift in Sources */,
+				20B803171CDA46BA00268C12 /* VenueTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

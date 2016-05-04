@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  VenueTableView.swift
 //  venueSearch
 //
 //  Created by Stu Almeleh on 5/4/16.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class VenueTableView: UITableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
