@@ -26,28 +26,28 @@ class SearchView: UIViewController, UITextFieldDelegate {
     
         zipTextField.delegate = self
         
-        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
-        tapRecognizer?.numberOfTapsRequired = 1
+//        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+//        tapRecognizer?.numberOfTapsRequired = 1
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        /* Add tap recognizer to dismiss keyboard */
-        self.addKeyboardDismissRecognizer()
-        
-        /* Subscribe to keyboard events so we can adjust the view to show hidden controls */
-        self.subscribeToKeyboardNotifications()
+//        
+//        /* Add tap recognizer to dismiss keyboard */
+//        self.addKeyboardDismissRecognizer()
+//        
+//        /* Subscribe to keyboard events so we can adjust the view to show hidden controls */
+//        self.subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        /* Remove tap recognizer */
-        self.removeKeyboardDismissRecognizer()
-        
-        /* Unsubscribe to all keyboard events */
-        self.unsubscribeToKeyboardNotifications()
+//        /* Remove tap recognizer */
+//        self.removeKeyboardDismissRecognizer()
+//        
+//        /* Unsubscribe to all keyboard events */
+//        self.unsubscribeToKeyboardNotifications()
     }
 
 
@@ -75,7 +75,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         forwardGeocoding(zipTextField.text!)
         
         //start songkick search
-        SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
+        //SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
         
         
     }
@@ -133,45 +133,45 @@ class SearchView: UIViewController, UITextFieldDelegate {
     
     
     
-    // MARK: Show/Hide Keyboard
-    func addKeyboardDismissRecognizer() {
-        self.view.addGestureRecognizer(tapRecognizer!)
-    }
-    
-    func removeKeyboardDismissRecognizer() {
-        self.view.removeGestureRecognizer(tapRecognizer!)
-    }
-    
-    func handleSingleTap(recognizer: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-    }
-    
-    func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-    }
-    
-    func unsubscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-    }
-    
-    func keyboardWillShow(notification: NSNotification) {
-        if self.view.frame.origin.y == 0.0 {
-            self.view.frame.origin.y -= self.getKeyboardHeight(notification) / 2
-        }
-    }
-    
-    func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0.0 {
-            self.view.frame.origin.y += self.getKeyboardHeight(notification) / 2
-        }
-    }
-    
-    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-        return keyboardSize.CGRectValue().height
-    }
+//    // MARK: Show/Hide Keyboard
+//    func addKeyboardDismissRecognizer() {
+//        self.view.addGestureRecognizer(tapRecognizer!)
+//    }
+//    
+//    func removeKeyboardDismissRecognizer() {
+//        self.view.removeGestureRecognizer(tapRecognizer!)
+//    }
+//    
+//    func handleSingleTap(recognizer: UITapGestureRecognizer) {
+//        self.view.endEditing(true)
+//    }
+//    
+//    func subscribeToKeyboardNotifications() {
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+//    }
+//    
+//    func unsubscribeToKeyboardNotifications() {
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+//    }
+//    
+//    func keyboardWillShow(notification: NSNotification) {
+//        if self.view.frame.origin.y == 0.0 {
+//            self.view.frame.origin.y -= self.getKeyboardHeight(notification) / 2
+//        }
+//    }
+//    
+//    func keyboardWillHide(notification: NSNotification) {
+//        if self.view.frame.origin.y != 0.0 {
+//            self.view.frame.origin.y += self.getKeyboardHeight(notification) / 2
+//        }
+//    }
+//    
+//    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+//        let userInfo = notification.userInfo
+//        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+//        return keyboardSize.CGRectValue().height
+//    }
 
     
     

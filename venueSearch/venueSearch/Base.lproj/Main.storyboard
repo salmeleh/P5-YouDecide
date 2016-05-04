@@ -90,7 +90,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="r5r-B3-Dbj" kind="showDetail" id="Ebe-D8-X68"/>
+                                    <segue destination="r5r-B3-Dbj" kind="show" id="7Gh-El-ct6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

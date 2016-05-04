@@ -18,6 +18,12 @@ struct MetroArea {
     var lng: Double
     var lon: Double
     
+    //MARK: Methods
+    
+    //MARK: JSON Body Keys
+
+    //MARK: JSON Response Keys
+
     
     
 }
