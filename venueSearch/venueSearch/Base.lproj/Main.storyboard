@@ -44,13 +44,12 @@
                                 <state key="normal" title="Search"/>
                                 <connections>
                                     <action selector="searchButtonPressed:" destination="QNg-fN-dOp" eventType="touchUpInside" id="wWI-Fr-ueq"/>
-                                    <segue destination="LOi-h7-uqd" kind="show" id="tvs-cW-vSW"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bIc-2W-nsB">
-                                <rect key="frame" x="268" y="285" width="65" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bIc-2W-nsB">
+                                <rect key="frame" x="252" y="285" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,22 +75,25 @@
         <!--Venue Table View-->
         <scene sceneID="j4F-EX-XNe">
             <objects>
-                <tableViewController storyboardIdentifier="VenueTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LOi-h7-uqd" customClass="VenueTableView" customModule="venueSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LOi-h7-uqd" customClass="VenueTableView" customModule="venueSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kPq-25-yzN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="venue" id="D26-8J-JnA">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D26-8J-JnA" id="drb-p6-JeQ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+<<<<<<< HEAD
                                 <connections>
                                     <segue destination="r5r-B3-Dbj" kind="show" id="7Gh-El-ct6"/>
                                 </connections>
+=======
+>>>>>>> parent of 7c0cbb0... starting API call
                             </tableViewCell>
                         </prototypes>
                         <connections>

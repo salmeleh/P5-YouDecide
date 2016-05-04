@@ -7,27 +7,29 @@
 //
 
 import UIKit
-import CoreLocation
 
-class SearchView: UIViewController, UITextFieldDelegate {
+class SearchView: UIViewController {
 
     //MARK: Properties
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
     var tapRecognizer: UITapGestureRecognizer? = nil
-    var zipLat: Double = 0.0
-    var zipLon: Double = 0.0
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+<<<<<<< HEAD
         zipTextField.delegate = self
         
 //        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
 //        tapRecognizer?.numberOfTapsRequired = 1
+=======
+        tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
+        tapRecognizer?.numberOfTapsRequired = 1
+>>>>>>> parent of 7c0cbb0... starting API call
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -52,24 +54,14 @@ class SearchView: UIViewController, UITextFieldDelegate {
 
 
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == self.zipTextField {
-            searchButtonPressed(UIButton)
-        }
-        return true
-    }
     
-    //via http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
-        if(textField.text?.characters.count < 5) {return true}
-        else {return false}
-        
-    }
+    
+    
     
     
     @IBAction func searchButtonPressed(sender: AnyObject) {
         print("searchButtonPressed")
+<<<<<<< HEAD
         
         //calculate lat lng
         forwardGeocoding(zipTextField.text!)
@@ -78,56 +70,11 @@ class SearchView: UIViewController, UITextFieldDelegate {
         //SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
         
         
+=======
+>>>>>>> parent of 7c0cbb0... starting API call
     }
     
-    
-    func handlerForGetMetroArea(result: [MetroArea]?, error: String?) -> Void {
-        if error == "" {
-            getMetroAreaComplete()
-        }
-        else {
-//            dispatch_async(dispatch_get_main_queue(), {
-//                self.loadingWheel.stopAnimating()
-//                self.loginButton.hidden = false
-//                self.launchAlertController(error)
-//            })
-        }
-    }
 
-    func getMetroAreaComplete() {
-        dispatch_async(dispatch_get_main_queue(), {
-            //stop loading animation
-            //self.loadingWheel.stopAnimating()
-            
-            //show venueTableView
-            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("VenueTableView") as! UITableViewController
-            self.presentViewController(controller, animated: true, completion: nil)
-        })
-        
-        
-    }
-    
-    
-    
-    //via http://mhorga.org/2015/08/14/geocoding-in-ios.html
-    func forwardGeocoding(address: String) {
-        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
-            if error != nil {
-                print(error)
-                return
-            }
-            if placemarks?.count > 0 {
-                let placemark = placemarks?[0]
-                let location = placemark?.location
-                let coordinate = location?.coordinate
-                let zipLat: Double = coordinate!.latitude
-                let zipLon: Double = coordinate!.longitude
-                print("lat: \(zipLat), lon: \(zipLon)")
-            }
-        })
-    }
-    
-    
     
     
     
