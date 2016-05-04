@@ -25,7 +25,7 @@ class SongKickClient: NSObject {
     //MARK: getMetroAreaID
     func getMetroAreaID(lat: Double, lon: Double, completionHandler: (result: [MetroArea], error: String) -> Void) {
         print("getMetroAreaID called")
-        let params: [String : AnyObject] = ["location": "\(lat),\(lon)", "apikey": SongKickClient.Constants.apiKey]
+        let params: [String : AnyObject] = ["location": "geo:\(lat),\(lon)", "apikey": SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.location + SongKickClient.escapedParameters(params)
         print("urlString: " + urlString)
         

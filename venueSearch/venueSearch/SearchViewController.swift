@@ -16,6 +16,8 @@ class SearchView: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     
     var tapRecognizer: UITapGestureRecognizer? = nil
+    var zipLat: Double = 0.0
+    var zipLon: Double = 0.0
 
     
     
@@ -67,38 +69,38 @@ class SearchView: UIViewController {
         forwardGeocoding(zipTextField.text!)
         
         //start songkick search
-//        SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
+        SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
         
         
     }
     
-//
-//    func handlerForGetMetroArea(result: [MetroArea]?, error: String?) -> Void {
-//        if error == "" {
-//            getMetroAreaComplete()
-//        }
-//        else {
-//            //            dispatch_async(dispatch_get_main_queue(), {
-//            //                self.loadingWheel.stopAnimating()
-//            //                self.loginButton.hidden = false
-//            //                self.launchAlertController(error)
-//            //            })
-//        }
-//    }
-//    
-//    
-//    func getMetroAreaComplete() {
-//        dispatch_async(dispatch_get_main_queue(), {
-//            //stop loading animation
-//            //self.loadingWheel.stopAnimating()
-//            
-//            //show venueTableView
-//            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("VenueTableView") as! UITableViewController
-//            self.presentViewController(controller, animated: true, completion: nil)
-//        })
-//        
-//        
-//    }
+
+    func handlerForGetMetroArea(result: [MetroArea]?, error: String?) -> Void {
+        if error == "" {
+            getMetroAreaComplete()
+        }
+        else {
+            //            dispatch_async(dispatch_get_main_queue(), {
+            //                self.loadingWheel.stopAnimating()
+            //                self.loginButton.hidden = false
+            //                self.launchAlertController(error)
+            //            })
+        }
+    }
+    
+    
+    func getMetroAreaComplete() {
+        dispatch_async(dispatch_get_main_queue(), {
+            //stop loading animation
+            //self.loadingWheel.stopAnimating()
+            
+            //show venueTableView
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("VenueTableView") as! UITableViewController
+            self.presentViewController(controller, animated: true, completion: nil)
+        })
+        
+        
+    }
     
     
     
@@ -113,9 +115,10 @@ class SearchView: UIViewController {
                 let placemark = placemarks?[0]
                 let location = placemark?.location
                 let coordinate = location?.coordinate
-                let zipLat: Double = coordinate!.latitude
-                let zipLon: Double = coordinate!.longitude
-                print("lat: \(zipLat), lon: \(zipLon)")
+                self.zipLat = coordinate!.latitude
+                self.zipLon = coordinate!.longitude
+                print("lat: \(self.zipLat), lon: \(self.zipLon)")
+                return
             }
         })
     }

@@ -75,7 +75,7 @@
         <!--Venue Table View-->
         <scene sceneID="j4F-EX-XNe">
             <objects>
-                <tableViewController id="LOi-h7-uqd" customClass="VenueTableView" customModule="venueSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="VenueTableVC" id="LOi-h7-uqd" customClass="VenueTableView" customModule="venueSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kPq-25-yzN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
