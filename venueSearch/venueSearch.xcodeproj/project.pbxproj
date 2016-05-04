@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202BCBAB1CDA72CE004025BB /* SongKickClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BCBAA1CDA72CE004025BB /* SongKickClient.swift */; };
+		202BCBAE1CDA7310004025BB /* SongKickConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BCBAD1CDA7310004025BB /* SongKickConstants.swift */; };
+		202BCBB01CDA7336004025BB /* MetroArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BCBAF1CDA7336004025BB /* MetroArea.swift */; };
 		20B802E81CDA42E900268C12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802E71CDA42E900268C12 /* AppDelegate.swift */; };
 		20B802EA1CDA42E900268C12 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802E91CDA42E900268C12 /* SearchViewController.swift */; };
 		20B802ED1CDA42E900268C12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20B802EB1CDA42E900268C12 /* Main.storyboard */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		202BCBAA1CDA72CE004025BB /* SongKickClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickClient.swift; sourceTree = "<group>"; };
+		202BCBAD1CDA7310004025BB /* SongKickConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickConstants.swift; sourceTree = "<group>"; };
+		202BCBAF1CDA7336004025BB /* MetroArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetroArea.swift; sourceTree = "<group>"; };
 		20B802E41CDA42E900268C12 /* venueSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = venueSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B802E71CDA42E900268C12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B802E91CDA42E900268C12 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +82,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202BCBAC1CDA72D8004025BB /* SongKick */ = {
+			isa = PBXGroup;
+			children = (
+				202BCBAA1CDA72CE004025BB /* SongKickClient.swift */,
+				202BCBAD1CDA7310004025BB /* SongKickConstants.swift */,
+				202BCBAF1CDA7336004025BB /* MetroArea.swift */,
+			);
+			name = SongKick;
+			sourceTree = "<group>";
+		};
 		20B802DB1CDA42E800268C12 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +118,7 @@
 				20B802EB1CDA42E900268C12 /* Main.storyboard */,
 				20B802E71CDA42E900268C12 /* AppDelegate.swift */,
 				20B803151CDA467D00268C12 /* Controller */,
+				202BCBAC1CDA72D8004025BB /* SongKick */,
 				20B802EE1CDA42E900268C12 /* Assets.xcassets */,
 				20B802F01CDA42E900268C12 /* LaunchScreen.storyboard */,
 				20B802F31CDA42E900268C12 /* Info.plist */,
@@ -267,9 +284,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				202BCBB01CDA7336004025BB /* MetroArea.swift in Sources */,
 				20B802EA1CDA42E900268C12 /* SearchViewController.swift in Sources */,
 				20B802E81CDA42E900268C12 /* AppDelegate.swift in Sources */,
 				20B803171CDA46BA00268C12 /* VenueTableView.swift in Sources */,
+				202BCBAE1CDA7310004025BB /* SongKickConstants.swift in Sources */,
+				202BCBAB1CDA72CE004025BB /* SongKickClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,7 +448,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = salmeleh.venueSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -497,6 +516,7 @@
 				20B8030E1CDA42E900268C12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20B8030F1CDA42E900268C12 /* Build configuration list for PBXNativeTarget "venueSearchTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +525,7 @@
 				20B803111CDA42E900268C12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20B803121CDA42E900268C12 /* Build configuration list for PBXNativeTarget "venueSearchUITests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +534,7 @@
 				20B803141CDA42E900268C12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
