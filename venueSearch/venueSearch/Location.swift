@@ -1,5 +1,5 @@
 //
-//  MetroArea.swift
+//  Location.swift
 //  venueSearch
 //
 //  Created by Stu Almeleh on 5/4/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MetroArea {
+struct Location {
     
     //MARK: Properites
     var country: String
@@ -31,11 +31,11 @@ struct MetroArea {
     }
     
     
-    static func metroAreasFromDictionary(results: [[String : AnyObject]]) -> [MetroArea] {
-        var locations = [MetroArea]()
+    static func locationsFromDictionary(results: [[String : AnyObject]]) -> [Location] {
+        var locations = [Location]()
         
         for result in results {
-            locations.append(MetroArea(dictionary: result))
+            locations.append(Location(dictionary: result))
         }
         
         return locations

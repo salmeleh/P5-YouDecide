@@ -75,7 +75,7 @@ class SearchView: UIViewController {
     }
     
 
-    func handlerForGetMetroArea(result: [MetroArea]?, error: String?) -> Void {
+    func handlerForGetMetroArea(result: [Location]?, error: String?) -> Void {
         if error == "" {
             getMetroAreaComplete()
         }

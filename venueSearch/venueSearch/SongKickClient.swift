@@ -23,7 +23,7 @@ class SongKickClient: NSObject {
     
     
     //MARK: getMetroAreaID
-    func getMetroAreaID(lat: Double, lon: Double, completionHandler: (result: [MetroArea], error: String) -> Void) {
+    func getMetroAreaID(lat: Double, lon: Double, completionHandler: (result: [Location], error: String) -> Void) {
         print("getMetroAreaID called")
         let params: [String : AnyObject] = ["location": "geo:\(lat),\(lon)", "apikey": SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.location + SongKickClient.escapedParameters(params)
@@ -45,7 +45,6 @@ class SongKickClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! [String : AnyObject]
-                //print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
@@ -56,7 +55,7 @@ class SongKickClient: NSObject {
                 print("Cannot find key 'resultsPage' in parsedResult")
                 return
             }
-            //print(resultsPage)
+            print(resultsPage)
             
             guard let totalLocations = resultsPage["totalEntries"] as? Int else {
                 print("Cannot find key 'totalEntries' in parsedResult")
@@ -64,18 +63,12 @@ class SongKickClient: NSObject {
             }
             
             if totalLocations > 0 {
-                guard let locationDictionary = resultsPage["results"] as? [String : AnyObject] else {
-                    print("Cannot find key 'results' in resultsPage")
-                    return
+                if let locationDictionary = resultsPage["results"] as? [String : AnyObject] {
+                    let locations = Location.locationsFromDictionary(locationDictionary)
+                    print(locations)
+                    completionHandler(result: locations, error: "success")
+                    
                 }
-                print(locationDictionary)
-                
-                if let metroAreaDictionary = locationDictionary["metroArea"] as? [String : AnyObject] {
-                    //let metroAreas = MetroArea.metroAreasFromDictionary(metroAreaDictionary)
-                   // completionHandler(result: metroAreas, error: "success")
-                }
-                
-                
                 
                 
             }
