@@ -23,7 +23,7 @@ class SongKickClient: NSObject {
     
     
     //MARK: getMetroAreaID
-    func getMetroAreaID(lat: Double, lon: Double, completionHandler: (result: Int?, error: String) -> Void) {
+    func getMetroAreaID(lat: Double, lon: Double, completionHandler: (result: Int?, error: String?) -> Void) {
         print("getMetroAreaID called")
         let params: [String : AnyObject] = ["location": "geo:\(lat),\(lon)", "apikey": SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.location + SongKickClient.escapedParameters(params)
@@ -91,9 +91,9 @@ class SongKickClient: NSObject {
                         completionHandler(result: nil, error: error)
                         return
                     }
-                    let metroaAreaID = metroArea["id"] as? Int
-                    print("nearest metroAreaID: \(metroaAreaID!)")
-                    completionHandler(result: metroaAreaID!, error: "success")
+                    let metroAreaID = metroArea["id"] as? Int
+                    print(metroAreaID)
+                    completionHandler(result: metroAreaID, error: nil)
                     return
                 }
                 
@@ -107,24 +107,84 @@ class SongKickClient: NSObject {
         }
         task.resume()
         
-        
-        
     }
     
     
     
     
     //MARK: getMAEvents
-    func getMAEvents(metroAreaID: Int, completionHandler: (result: AnyObject, error: String?) -> Void) {
-            print("getMAEvents called")
+    func getMAEvents(metroAreaID: Int, completionHandler: (result: AnyObject?, error: String?) -> Void) {
+        print("getMAEvents called")
+        let params: [String : AnyObject] = ["apikey": SongKickClient.Constants.apiKey]
+        let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.metroAreas + String(metroAreaID) + SongKickClient.Methods.calendars + SongKickClient.escapedParameters(params)
+        print("urlString: " + urlString)
         
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         
-        
-        
-        
-        
-        
-        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            guard (error == nil) else {
+                completionHandler(result: nil, error: "Connection Error")
+                return
+            }
+            guard let data = data else {
+                completionHandler(result: nil, error: "No data was returned")
+                return
+            }
+            
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
+                print(parsedResult)
+            } catch {
+                parsedResult = nil
+                print("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+
+            guard let resultsPageDictionary = parsedResult["resultsPage"] as? NSDictionary else {
+                print("Cannot find key 'resultsPage' in parsedResult")
+                return
+            }
+            
+            guard let totalEvents = resultsPageDictionary["totalEntries"] as? Int else {
+                let error: String = "Cannot find key 'totalEntries' in parsedResult"
+                print(error)
+                completionHandler(result: nil, error: error)
+                return
+            }
+
+            if totalEvents > 0 {
+                
+                guard let resultsDictionary = resultsPageDictionary["results"] as? [String : AnyObject] else {
+                    let error: String = "Cannot find key 'results' in resultsPageDictionary"
+                    print(error)
+                    completionHandler(result: nil, error: error)
+                    return
+                }
+                
+                guard let eventsArray = resultsDictionary["event"] as? [[String : AnyObject]] else {
+                    let error: String = "Cannot find key 'location' in resultsDictionary"
+                    print(error)
+                    completionHandler(result: nil, error: error)
+                    return
+                }
+                print(eventsArray[0])
+                
+                
+                
+            }
+            else {
+                completionHandler(result: nil, error: "No events in that metro area =[")
+                return
+            }
+            
+            
+            
+            
+            
+        }
+        task.resume()
         
     }
     

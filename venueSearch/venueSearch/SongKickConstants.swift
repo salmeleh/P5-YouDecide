@@ -20,7 +20,8 @@ extension SongKickClient {
     //MARK: Methods
     struct Methods {
         static let location = "search/locations.json"
-        static let metroaAreas = "metro_areas/"
+        static let metroAreas = "metro_areas/"
+        static let calendars = "/calendar.json"
         
     }
     

@@ -19,6 +19,8 @@ struct Location {
     var state: String
     var uri: String
     
+    
+    //MARK: init
     init(dictionary: [String : AnyObject]) {
         self.country = dictionary[SongKickClient.JSONResponseKeys.Country] as! String
         self.displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
@@ -30,7 +32,7 @@ struct Location {
         
     }
     
-    
+    //MARK: from dict
     static func locationsFromDictionary(results: [[String : AnyObject]]) -> [Location] {
         var locations = [Location]()
         

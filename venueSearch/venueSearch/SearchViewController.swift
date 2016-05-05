@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class SearchView: UIViewController {
+class SearchView: UIViewController, UITextFieldDelegate {
 
     //MARK: Properties
     @IBOutlet weak var zipTextField: UITextField!
@@ -21,7 +21,7 @@ class SearchView: UIViewController {
     var zipLon: Double = 0.0
 
     
-    
+    //MARK: view...
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -30,6 +30,8 @@ class SearchView: UIViewController {
         
         loadingWheel.hidesWhenStopped = true
         loadingWheel.hidden = true
+        
+        zipTextField.delegate = self
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -53,7 +55,7 @@ class SearchView: UIViewController {
     }
 
 
-
+    //MARK: textField delegate methods
     //via http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
@@ -65,7 +67,7 @@ class SearchView: UIViewController {
     
     
     
-    
+    //MARK: searchButtonPressed
     @IBAction func searchButtonPressed(sender: AnyObject) {
         print("searchButtonPressed")
         
@@ -76,17 +78,21 @@ class SearchView: UIViewController {
         //calculate lat lng
         forwardGeocoding(zipTextField.text!)
         
-        //start songkick search
-        SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
+        if zipLat && zipLon !== 0 {
+            //start songkick search
+            SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
+        }
         
     }
     
 
-    func handlerForGetMetroArea(result: Int?, error: String?) -> Void {
-        if error == "" {
-            let metroAreaID = result!
+    
+    //MARK: completionhandlers
+    func handlerForGetMetroArea(metroAreaID: Int?, error: String?) -> Void {
+        if error == nil {
+            print("getMetroArea returned no error. metroAreaID is: \(metroAreaID!)")
             //getMAEvents
-            //SongKickClient.sharedInstance().getMAEvents(metroAreaID, completionHandler: handlerForGetMAEvents)
+            SongKickClient.sharedInstance().getMAEvents(metroAreaID!, completionHandler: handlerForGetMAEvents)
             
         }
         else {
@@ -99,10 +105,9 @@ class SearchView: UIViewController {
     
     
     
-    
-    func handlerForGetMAEvents(result: AnyObject, error: String?) -> Void {
-        if error == "" {
-            
+    func handlerForGetMAEvents(result: AnyObject?, error: String?) -> Void {
+        if error == nil {
+            print("getMetroAreaEvents returned no error")
         }
         else {
             dispatch_async(dispatch_get_main_queue(), {
@@ -129,7 +134,7 @@ class SearchView: UIViewController {
     }
     
     
-    
+    //MARK: forwardGeocoding
     //via http://mhorga.org/2015/08/14/geocoding-in-ios.html
     func forwardGeocoding(address: String) {
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
@@ -156,7 +161,7 @@ class SearchView: UIViewController {
     
     
     
-    
+    //MARK: launchAlertController
     /* shows alert view with error */
     func launchAlertController(error: String) {
         let alertController = UIAlertController(title: "", message: error, preferredStyle: .Alert)

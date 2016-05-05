@@ -18,6 +18,7 @@
 		20B802FD1CDA42E900268C12 /* venueSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802FC1CDA42E900268C12 /* venueSearchTests.swift */; };
 		20B803081CDA42E900268C12 /* venueSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B803071CDA42E900268C12 /* venueSearchUITests.swift */; };
 		20B803171CDA46BA00268C12 /* VenueTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B803161CDA46BA00268C12 /* VenueTableView.swift */; };
+		20BAEC2F1CDBC5BF009AE60E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BAEC2E1CDBC5BF009AE60E /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		20B803071CDA42E900268C12 /* venueSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = venueSearchUITests.swift; sourceTree = "<group>"; };
 		20B803091CDA42E900268C12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20B803161CDA46BA00268C12 /* VenueTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableView.swift; sourceTree = "<group>"; };
+		20BAEC2E1CDBC5BF009AE60E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				202BCBAA1CDA72CE004025BB /* SongKickClient.swift */,
 				202BCBAD1CDA7310004025BB /* SongKickConstants.swift */,
 				202BCBAF1CDA7336004025BB /* Location.swift */,
+				20BAEC2E1CDBC5BF009AE60E /* Event.swift */,
 			);
 			name = SongKick;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				20B802E81CDA42E900268C12 /* AppDelegate.swift in Sources */,
 				20B803171CDA46BA00268C12 /* VenueTableView.swift in Sources */,
 				202BCBAE1CDA7310004025BB /* SongKickConstants.swift in Sources */,
+				20BAEC2F1CDBC5BF009AE60E /* Event.swift in Sources */,
 				202BCBAB1CDA72CE004025BB /* SongKickClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
