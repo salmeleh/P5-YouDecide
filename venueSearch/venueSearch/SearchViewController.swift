@@ -14,6 +14,7 @@ class SearchView: UIViewController {
     //MARK: Properties
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
     
     var tapRecognizer: UITapGestureRecognizer? = nil
     var zipLat: Double = 0.0
@@ -26,6 +27,9 @@ class SearchView: UIViewController {
     
         tapRecognizer = UITapGestureRecognizer(target: self, action: "handleSingleTap:")
         tapRecognizer?.numberOfTapsRequired = 1
+        
+        loadingWheel.hidesWhenStopped = true
+        loadingWheel.hidden = true
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -65,6 +69,10 @@ class SearchView: UIViewController {
     @IBAction func searchButtonPressed(sender: AnyObject) {
         print("searchButtonPressed")
         
+        //start loading animation
+        loadingWheel.hidden = false
+        loadingWheel.startAnimating()
+        
         //calculate lat lng
         forwardGeocoding(zipTextField.text!)
         
@@ -75,16 +83,15 @@ class SearchView: UIViewController {
     }
     
 
-    func handlerForGetMetroArea(result: [Location]?, error: String?) -> Void {
+    func handlerForGetMetroArea(result: Int?, error: String?) -> Void {
         if error == "" {
             getMetroAreaComplete()
         }
         else {
-            //            dispatch_async(dispatch_get_main_queue(), {
-            //                self.loadingWheel.stopAnimating()
-            //                self.loginButton.hidden = false
-            //                self.launchAlertController(error)
-            //            })
+            dispatch_async(dispatch_get_main_queue(), {
+                self.loadingWheel.stopAnimating()
+                self.launchAlertController(error!)
+            })
         }
     }
     
@@ -92,10 +99,10 @@ class SearchView: UIViewController {
     func getMetroAreaComplete() {
         dispatch_async(dispatch_get_main_queue(), {
             //stop loading animation
-            //self.loadingWheel.stopAnimating()
+            self.loadingWheel.stopAnimating()
             
             //show venueTableView
-            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("VenueTableView") as! UITableViewController
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("VenueTableVC") as! UITableViewController
             self.presentViewController(controller, animated: true, completion: nil)
         })
         
@@ -128,6 +135,22 @@ class SearchView: UIViewController {
     
     
     
+    
+    
+    
+    /* shows alert view with error */
+    func launchAlertController(error: String) {
+        let alertController = UIAlertController(title: "", message: error, preferredStyle: .Alert)
+        
+        let OKAction = UIAlertAction(title: "Dismiss", style: .Default) { (action) in
+            //self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true) {
+            
+        }
+    }
     
     
     

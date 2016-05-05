@@ -51,12 +51,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="go"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SQD-t4-N5R">
+                                <rect key="frame" x="282" y="415" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bIc-2W-nsB" firstAttribute="centerY" secondItem="ob9-Cr-df2" secondAttribute="centerY" id="8Gs-dq-SiG"/>
+                            <constraint firstItem="SQD-t4-N5R" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="8xE-yl-o54"/>
                             <constraint firstItem="c80-lB-7bi" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="Hb8-kA-GvP"/>
                             <constraint firstItem="bIc-2W-nsB" firstAttribute="top" secondItem="c80-lB-7bi" secondAttribute="bottom" constant="24" id="Vle-2W-qYz"/>
+                            <constraint firstItem="SQD-t4-N5R" firstAttribute="top" secondItem="bIc-2W-nsB" secondAttribute="bottom" constant="100" id="YFw-IB-6oH"/>
                             <constraint firstItem="bIc-2W-nsB" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="aMx-BY-xfG"/>
                             <constraint firstItem="4nT-ic-vBJ" firstAttribute="top" secondItem="2l1-dD-kIp" secondAttribute="bottom" constant="20" id="cpb-ih-ZBy"/>
                             <constraint firstItem="2l1-dD-kIp" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="jX9-kM-Cy1"/>
@@ -64,6 +70,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wk0-ta-aMS"/>
                     <connections>
+                        <outlet property="loadingWheel" destination="SQD-t4-N5R" id="1Cx-5j-76h"/>
                         <outlet property="searchButton" destination="2l1-dD-kIp" id="Opl-YQ-akf"/>
                         <outlet property="zipTextField" destination="bIc-2W-nsB" id="Sgx-dv-ttB"/>
                     </connections>

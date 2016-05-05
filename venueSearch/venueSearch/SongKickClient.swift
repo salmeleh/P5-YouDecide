@@ -23,7 +23,7 @@ class SongKickClient: NSObject {
     
     
     //MARK: getMetroAreaID
-    func getMetroAreaID(lat: Double, lon: Double, completionHandler: (result: [Location], error: String) -> Void) {
+    func getMetroAreaID(lat: Double, lon: Double, completionHandler: (result: Int?, error: String) -> Void) {
         print("getMetroAreaID called")
         let params: [String : AnyObject] = ["location": "geo:\(lat),\(lon)", "apikey": SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.location + SongKickClient.escapedParameters(params)
@@ -34,11 +34,11 @@ class SongKickClient: NSObject {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             guard (error == nil) else {
-                completionHandler(result: [], error: "Connection Error")
+                completionHandler(result: nil, error: "Connection Error")
                 return
             }
             guard let data = data else {
-                completionHandler(result: [], error: "No data was returned")
+                completionHandler(result: nil, error: "No data was returned")
                 return
             }
             
@@ -58,48 +58,51 @@ class SongKickClient: NSObject {
             }
             //print(resultsPageDictionary)
             
+            
             guard let totalLocations = resultsPageDictionary["totalEntries"] as? Int else {
-                print("Cannot find key 'totalEntries' in parsedResult")
+                let error: String = "Cannot find key 'totalEntries' in parsedResult"
+                print(error)
+                completionHandler(result: nil, error: error)
                 return
             }
 
-            guard let resultsDictionary = resultsPageDictionary["results"] as? [String : AnyObject] else {
-                print("Cannot find key 'results' in resultsPageDictionary")
-                return
-            }
-            //print(resultsDictionary)
-            
-            guard let locationsArray = resultsDictionary["location"] as? [[String : AnyObject]] else {
-                print("Cannot find key 'location' in resultsDictionary")
-                return
-            }
-            print(locationsArray[0])
-            
-            if let locationDictionary = locationsArray[0] as? [String : AnyObject] {
-                guard let metroArea = locationDictionary["metroArea"] as? [String : AnyObject] else {
-                    print("Cannot find key 'metroArea' in locationDictionary")
+            if totalLocations > 0 {
+                
+                guard let resultsDictionary = resultsPageDictionary["results"] as? [String : AnyObject] else {
+                    let error: String = "Cannot find key 'results' in resultsPageDictionary"
+                    print(error)
+                    completionHandler(result: nil, error: error)
                     return
                 }
-                let metroaAreaID = metroArea["id"] as? Int
-                print(metroaAreaID)
+                //print(resultsDictionary)
+                
+                guard let locationsArray = resultsDictionary["location"] as? [[String : AnyObject]] else {
+                    let error: String = "Cannot find key 'location' in resultsDictionary"
+                    print(error)
+                    completionHandler(result: nil, error: error)
+                    return
+                }
+                //print(locationsArray[0])
+                
+                if let locationDictionary = locationsArray[0] as? [String : AnyObject] {
+                    guard let metroArea = locationDictionary["metroArea"] as? [String : AnyObject] else {
+                        let error: String = "Cannot find key 'metroArea' in locationDictionary"
+                        print(error)
+                        completionHandler(result: nil, error: error)
+                        return
+                    }
+                    let metroaAreaID = metroArea["id"] as? Int
+                    print("nearest metroAreaID: \(metroaAreaID!)")
+                    completionHandler(result: metroaAreaID!, error: "success")
+                    return
+                }
+                
+            
+            } else {
+                let error: String = "locationsArray is empty"
+                print(error)
+                completionHandler(result: nil, error: error)
             }
-            else {print("locationsArray is empty")}
-            
-            
-            
-//            if totalLocations > 0 {
-//                print("totalLocations > 0")
-//                if let locationDictionary = resultsDictionary["results"] as? [String : AnyObject] {
-//                    print("locationDictionary created")
-//                    let locations = Location.locationsFromDictionary(locationDictionary)
-//                    print(locations)
-//                    completionHandler(result: locations, error: "success")
-//                    
-//                }
-//                
-//                
-//            }
-    
             
         }
         task.resume()
