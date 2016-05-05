@@ -163,16 +163,14 @@ class SongKickClient: NSObject {
                     return
                 }
                 
-                guard let eventsArray = resultsDictionary["event"] as? [[String : AnyObject]] else {
-                    let error: String = "Cannot find key 'location' in resultsDictionary"
-                    print(error)
-                    completionHandler(result: nil, error: error)
+                if let eventsArray = resultsDictionary["event"] as? [[String : AnyObject]] {
+                    print(eventsArray)
+                    
+                    let events = Event.eventsFromDictionary(eventsArray)
+                    completionHandler(result: events, error: nil)
                     return
                 }
-                print(eventsArray[0])
                 
-                let events = Event.eventsFromDictionary(eventsArray)
-                completionHandler(result: events, error: nil)
                 
                 
                 

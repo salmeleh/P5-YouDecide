@@ -34,7 +34,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         
         zipTextField.delegate = self
         
-        /////temporarily set coordiantes for testing//////
+        /////temporarily hardcode coordiantes for testing//////
         zipLat = 41.9520674
         zipLon = -87.6592539
     }
