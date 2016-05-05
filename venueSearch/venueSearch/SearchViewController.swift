@@ -20,6 +20,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
     var zipLat: Double = 0.0
     var zipLon: Double = 0.0
 
+
     
     //MARK: view...
     override func viewDidLoad() {
@@ -32,6 +33,10 @@ class SearchView: UIViewController, UITextFieldDelegate {
         loadingWheel.hidden = true
         
         zipTextField.delegate = self
+        
+        /////temporarily set coordiantes for testing//////
+        zipLat = 41.9520674
+        zipLon = -87.6592539
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -60,11 +65,21 @@ class SearchView: UIViewController, UITextFieldDelegate {
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
         if(textField.text?.characters.count < 5) {return true}
-        else {return false}
+        else {
+            //calculate lat lng
+            forwardGeocoding(zipTextField.text!)
+            return false
+        }
         
     }
     
-    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField.text?.characters.count == 5 {
+            forwardGeocoding(zipTextField.text!)
+            searchButtonPressed(UIButton)
+        }
+        return true
+    }
     
     
     //MARK: searchButtonPressed
@@ -75,13 +90,10 @@ class SearchView: UIViewController, UITextFieldDelegate {
         loadingWheel.hidden = false
         loadingWheel.startAnimating()
         
-        //calculate lat lng
-        forwardGeocoding(zipTextField.text!)
         
-        if zipLat && zipLon !== 0.0 {
-            //start songkick search
-            SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
-        }
+        //start songkick search
+        SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
+        
         
     }
     
@@ -105,7 +117,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
     
     
     
-    func handlerForGetMAEvents(result: AnyObject?, error: String?) -> Void {
+    func handlerForGetMAEvents(result: [Event]?, error: String?) -> Void {
         if error == nil {
             print("getMetroAreaEvents returned no error")
         }

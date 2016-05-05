@@ -113,7 +113,7 @@ class SongKickClient: NSObject {
     
     
     //MARK: getMAEvents
-    func getMAEvents(metroAreaID: Int, completionHandler: (result: AnyObject?, error: String?) -> Void) {
+    func getMAEvents(metroAreaID: Int, completionHandler: (result: [Event]?, error: String?) -> Void) {
         print("getMAEvents called")
         let params: [String : AnyObject] = ["apikey": SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.metroAreas + String(metroAreaID) + SongKickClient.Methods.calendars + SongKickClient.escapedParameters(params)
@@ -135,7 +135,7 @@ class SongKickClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
-                print(parsedResult)
+                //print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
@@ -170,6 +170,9 @@ class SongKickClient: NSObject {
                     return
                 }
                 print(eventsArray[0])
+                
+                let events = Event.eventsFromDictionary(eventsArray)
+                completionHandler(result: events, error: nil)
                 
                 
                 

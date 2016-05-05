@@ -36,6 +36,14 @@ extension SongKickClient {
         static let ID = "is"
         static let URI = "uri"
         static let DisplayName = "displayName"
+        
+        static let Status = "status"
+        static let Start = "start"
+        static let Popularity = "popularity"
+        static let Location = "location"
+        static let Performance = "performance"
+        static let AgeRestriction = "ageRestriction"
+        static let Venue = "venue"
     }
     
     
