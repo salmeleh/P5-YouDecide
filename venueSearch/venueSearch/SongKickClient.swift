@@ -115,7 +115,18 @@ class SongKickClient: NSObject {
     
     
     //MARK: getMAEvents
-    
+    func getMAEvents(metroAreaID: Int, completionHandler: (result: AnyObject, error: String?) -> Void) {
+            print("getMAEvents called")
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
     
     
     

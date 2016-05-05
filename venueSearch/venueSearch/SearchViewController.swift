@@ -79,13 +79,15 @@ class SearchView: UIViewController {
         //start songkick search
         SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
         
-        
     }
     
 
     func handlerForGetMetroArea(result: Int?, error: String?) -> Void {
         if error == "" {
-            getMetroAreaComplete()
+            let metroAreaID = result!
+            //getMAEvents
+            //SongKickClient.sharedInstance().getMAEvents(metroAreaID, completionHandler: handlerForGetMAEvents)
+            
         }
         else {
             dispatch_async(dispatch_get_main_queue(), {
@@ -96,7 +98,24 @@ class SearchView: UIViewController {
     }
     
     
-    func getMetroAreaComplete() {
+    
+    
+    func handlerForGetMAEvents(result: AnyObject, error: String?) -> Void {
+        if error == "" {
+            
+        }
+        else {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.loadingWheel.stopAnimating()
+                self.launchAlertController(error!)
+            })
+        }
+    }
+    
+        
+    
+    
+    func getMetroAreaEventsComplete() {
         dispatch_async(dispatch_get_main_queue(), {
             //stop loading animation
             self.loadingWheel.stopAnimating()
