@@ -78,7 +78,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         //calculate lat lng
         forwardGeocoding(zipTextField.text!)
         
-        if zipLat && zipLon !== 0 {
+        if zipLat && zipLon !== 0.0 {
             //start songkick search
             SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
         }
