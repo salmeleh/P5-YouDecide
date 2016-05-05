@@ -44,35 +44,62 @@ class SongKickClient: NSObject {
             
             let parsedResult: AnyObject!
             do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! [String : AnyObject]
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
+                //print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
                 return
             }
             
-            guard let resultsPage = parsedResult["resultsPage"] as? [String: AnyObject] else {
+            guard let resultsPageDictionary = parsedResult["resultsPage"] as? NSDictionary else {
                 print("Cannot find key 'resultsPage' in parsedResult")
                 return
             }
-            print(resultsPage)
+            //print(resultsPageDictionary)
             
-            guard let totalLocations = resultsPage["totalEntries"] as? Int else {
+            guard let totalLocations = resultsPageDictionary["totalEntries"] as? Int else {
                 print("Cannot find key 'totalEntries' in parsedResult")
                 return
             }
-            
-            if totalLocations > 0 {
-                if let locationDictionary = resultsPage["results"] as? [String : AnyObject] {
-                    let locations = Location.locationsFromDictionary(locationDictionary)
-                    print(locations)
-                    completionHandler(result: locations, error: "success")
-                    
-                }
-                
-                
+
+            guard let resultsDictionary = resultsPageDictionary["results"] as? [String : AnyObject] else {
+                print("Cannot find key 'results' in resultsPageDictionary")
+                return
             }
+            //print(resultsDictionary)
             
+            guard let locationsArray = resultsDictionary["location"] as? [[String : AnyObject]] else {
+                print("Cannot find key 'location' in resultsDictionary")
+                return
+            }
+            print(locationsArray[0])
+            
+            if let locationDictionary = locationsArray[0] as? [String : AnyObject] {
+                guard let metroArea = locationDictionary["metroArea"] as? [String : AnyObject] else {
+                    print("Cannot find key 'metroArea' in locationDictionary")
+                    return
+                }
+                let metroaAreaID = metroArea["id"] as? Int
+                print(metroaAreaID)
+            }
+            else {print("locationsArray is empty")}
+            
+            
+            
+//            if totalLocations > 0 {
+//                print("totalLocations > 0")
+//                if let locationDictionary = resultsDictionary["results"] as? [String : AnyObject] {
+//                    print("locationDictionary created")
+//                    let locations = Location.locationsFromDictionary(locationDictionary)
+//                    print(locations)
+//                    completionHandler(result: locations, error: "success")
+//                    
+//                }
+//                
+//                
+//            }
+    
             
         }
         task.resume()
