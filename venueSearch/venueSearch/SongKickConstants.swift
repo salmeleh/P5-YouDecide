@@ -33,7 +33,7 @@ extension SongKickClient {
         static let Lng = "lng"
         static let State = "state"
         static let MetroArea = "metroArea"
-        static let ID = "is"
+        static let ID = "id"
         static let URI = "uri"
         static let DisplayName = "displayName"
         

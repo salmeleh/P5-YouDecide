@@ -16,6 +16,8 @@ class SongKickClient: NSObject {
     var sessionID : String? = nil
     var userID : Int? = nil
     
+    var events: [Event] = [Event]()
+    
     override init() {
         session = NSURLSession.sharedSession()
         super.init()
@@ -166,8 +168,8 @@ class SongKickClient: NSObject {
                 if let eventsArray = resultsDictionary["event"] as? [[String : AnyObject]] {
                     print(eventsArray)
                     
-                    let events = Event.eventsFromDictionary(eventsArray)
-                    completionHandler(result: events, error: nil)
+                    self.events = Event.eventsFromDictionary(eventsArray)
+                    completionHandler(result: self.events, error: nil)
                     return
                 }
                 
