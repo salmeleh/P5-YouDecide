@@ -15,6 +15,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
+    var events: [Event] = [Event]()
     
     var tapRecognizer: UITapGestureRecognizer? = nil
     var zipLat: Double = 0.0
@@ -119,7 +120,9 @@ class SearchView: UIViewController, UITextFieldDelegate {
     
     func handlerForGetMAEvents(result: [Event]?, error: String?) -> Void {
         if error == nil {
-            print("getMetroAreaEvents returned no error")
+            print("getMetroAreaEvents returned no error. # of events: \((result?.count)!)")
+            self.events = result!
+            getMetroAreaEventsComplete()
         }
         else {
             dispatch_async(dispatch_get_main_queue(), {
@@ -138,12 +141,25 @@ class SearchView: UIViewController, UITextFieldDelegate {
             self.loadingWheel.stopAnimating()
             
             //show venueTableView
-            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("VenueTableVC") as! UITableViewController
-            self.presentViewController(controller, animated: true, completion: nil)
+            self.performSegueWithIdentifier("ShowVenueTableVC", sender: nil)
         })
         
         
     }
+    
+    
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowVenueTableVC") {
+            let viewController = segue.destinationViewController as! VenueTableView
+            viewController.events = events
+        }
+    }
+    
+    
+    
+    
     
     
     //MARK: forwardGeocoding
