@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct Event {
     
@@ -17,7 +18,7 @@ struct Event {
     var location: [String: AnyObject]
     var id = 0
     var performance: [[String : AnyObject]]
-    var venue: [String : AnyObject]
+    var venue: Venue?
     
     
     //MARK: Init
@@ -28,7 +29,8 @@ struct Event {
         location = dictionary[SongKickClient.JSONResponseKeys.Location] as! [String: AnyObject]
         id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
         performance = dictionary[SongKickClient.JSONResponseKeys.Performance] as! [[String : AnyObject]]
-        venue = dictionary[SongKickClient.JSONResponseKeys.Venue] as! [String : AnyObject]
+        venue = dictionary[SongKickClient.JSONResponseKeys.Venue] as? Venue
+        
     }
     
 

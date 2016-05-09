@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class VenueTableView: UITableViewController {
     
@@ -24,7 +25,8 @@ class VenueTableView: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
         
         cell.textLabel!.text = event.displayName
-        
+        //cell.detailTextLabel!.text = event.performance.
+
         
         return cell
     }

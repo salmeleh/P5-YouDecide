@@ -167,14 +167,18 @@ class SongKickClient: NSObject {
                 
                 if let eventsArray = resultsDictionary["event"] as? [[String : AnyObject]] {
                     //print(eventsArray)
-                
-                    //TODO: sort events by popularity
                     
                     self.events = Event.eventsFromDictionary(eventsArray)
+                    
+                    
+                    print(self.events[0])
+                    print(self.events[0].venue?.displayName)
+                    
                     completionHandler(result: self.events, error: nil)
                     return
                 }
                 
+               
                 
                 
                 

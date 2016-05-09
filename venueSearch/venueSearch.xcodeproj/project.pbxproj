@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2016117F1CE122D700E37A4E /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016117E1CE122D700E37A4E /* Venue.swift */; };
 		202BCBAB1CDA72CE004025BB /* SongKickClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BCBAA1CDA72CE004025BB /* SongKickClient.swift */; };
 		202BCBAE1CDA7310004025BB /* SongKickConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BCBAD1CDA7310004025BB /* SongKickConstants.swift */; };
 		202BCBB01CDA7336004025BB /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BCBAF1CDA7336004025BB /* Location.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2016117E1CE122D700E37A4E /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		202BCBAA1CDA72CE004025BB /* SongKickClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickClient.swift; sourceTree = "<group>"; };
 		202BCBAD1CDA7310004025BB /* SongKickConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickConstants.swift; sourceTree = "<group>"; };
 		202BCBAF1CDA7336004025BB /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				202BCBAD1CDA7310004025BB /* SongKickConstants.swift */,
 				202BCBAF1CDA7336004025BB /* Location.swift */,
 				20BAEC2E1CDBC5BF009AE60E /* Event.swift */,
+				2016117E1CE122D700E37A4E /* Venue.swift */,
 			);
 			name = SongKick;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				202BCBB01CDA7336004025BB /* Location.swift in Sources */,
+				2016117F1CE122D700E37A4E /* Venue.swift in Sources */,
 				20B802EA1CDA42E900268C12 /* SearchViewController.swift in Sources */,
 				20B802E81CDA42E900268C12 /* AppDelegate.swift in Sources */,
 				20B803171CDA46BA00268C12 /* VenueTableView.swift in Sources */,

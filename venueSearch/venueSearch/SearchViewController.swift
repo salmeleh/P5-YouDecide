@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import CoreData
 
 class SearchView: UIViewController, UITextFieldDelegate {
 
@@ -35,9 +36,9 @@ class SearchView: UIViewController, UITextFieldDelegate {
         
         zipTextField.delegate = self
         
-        /////temporarily hardcode coordiantes for testing//////
-        zipLat = 41.9520674
-        zipLon = -87.6592539
+        /////temporarily hardcode coordiantes for testing (Wrigley Field)//////
+        zipLat = 41.9484
+        zipLon = -87.6553
     }
 
     override func viewWillAppear(animated: Bool) {
