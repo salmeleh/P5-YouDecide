@@ -16,7 +16,7 @@ struct Event {
     var popularity = 0.0
     var location: [String: AnyObject]
     var id = 0
-    var performance: [String : AnyObject]
+    var performance: [[String : AnyObject]]
     var venue: [String : AnyObject]
     
     
@@ -27,7 +27,7 @@ struct Event {
         popularity = dictionary[SongKickClient.JSONResponseKeys.Popularity] as! Double
         location = dictionary[SongKickClient.JSONResponseKeys.Location] as! [String: AnyObject]
         id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
-        performance = dictionary[SongKickClient.JSONResponseKeys.Performance] as! [String : AnyObject]
+        performance = dictionary[SongKickClient.JSONResponseKeys.Performance] as! [[String : AnyObject]]
         venue = dictionary[SongKickClient.JSONResponseKeys.Venue] as! [String : AnyObject]
     }
     
