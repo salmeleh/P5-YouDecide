@@ -88,6 +88,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="mp0-ua-svg">
+                            <rect key="frame" x="0.0" y="142" width="600" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="venueTVC" textLabel="Hbd-N6-IKQ" detailTextLabel="XBN-FK-6lA" rowHeight="50" style="IBUITableViewCellStyleValue1" id="D26-8J-JnA">
                                 <rect key="frame" x="0.0" y="92" width="600" height="50"/>
@@ -120,6 +125,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="loadingWheel" destination="mp0-ua-svg" id="TGu-YG-9J0"/>
                         <segue destination="j6o-cH-FbV" kind="show" identifier="showVenueCalendarTVC" id="yJy-TP-snF"/>
                     </connections>
                 </tableViewController>

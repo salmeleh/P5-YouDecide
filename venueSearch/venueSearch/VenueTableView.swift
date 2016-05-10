@@ -14,6 +14,10 @@ class VenueTableView: UITableViewController {
     var events: [Event] = [Event]()
     var venues: [Venue] = [Venue]()
     
+    
+    @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
