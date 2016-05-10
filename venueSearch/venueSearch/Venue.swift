@@ -32,7 +32,6 @@ struct Venue {
     
     //MARK: From dict
     static func venuesFromDictionary(results: [[String : AnyObject]]) -> [Venue] {
-        print("venueFromDictionary called")
         var venues = [Venue]()
         
         for result in results {

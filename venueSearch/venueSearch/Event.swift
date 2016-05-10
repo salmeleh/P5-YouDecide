@@ -37,7 +37,6 @@ struct Event {
     
     //MARK: From dict
     static func eventsFromDictionary(results: [[String : AnyObject]]) -> [Event] {
-        print("eventsFromDictionary called")
         var calendar = [Event]()
                 
         for result in results {

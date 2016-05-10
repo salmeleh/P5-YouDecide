@@ -95,7 +95,6 @@ class SearchView: UIViewController, UITextFieldDelegate {
     
     //MARK: searchButtonPressed
     @IBAction func searchButtonPressed(sender: AnyObject) {
-        print("searchButtonPressed")
         
         if zipTextField.text?.characters.count !== 5 {
             launchAlertController("invalid zip code")
@@ -113,10 +112,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         loadingWheel.startAnimating()
         
         
-        //start songkick metroarea search
-        //SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
-        
-        //start songkick venue search
+        //songkick venue search
 //        if userSubLocality == "" {
             SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
 //        }
@@ -210,7 +206,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
     func forwardGeocoding(address: String) {
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
-                print(error)
+                self.launchAlertController(String(error))
                 return
             }
             if placemarks?.count > 0 {
@@ -221,9 +217,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
                 let coordinate = location?.coordinate
                 self.zipLat = coordinate!.latitude
                 self.zipLon = coordinate!.longitude
-                //print("lat: \(self.zipLat), lon: \(self.zipLon)")
-                //print("sublocality: \(self.userSubLocality)")
-                //print("locality: \(self.userLocality)")
+
                 return
             }
         })
@@ -242,7 +236,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         let alertController = UIAlertController(title: "", message: error, preferredStyle: .Alert)
         
         let OKAction = UIAlertAction(title: "Dismiss", style: .Default) { (action) in
-            //self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
         alertController.addAction(OKAction)
         
