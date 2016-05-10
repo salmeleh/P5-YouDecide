@@ -14,8 +14,8 @@ struct Venue {
     //MARK: Properties
     var displayName = ""
     var id = 0
-    var lat = 0.0
-    var lng = 0.0
+    var lat: Double?
+    var lng: Double?
     var street = ""
     //var events: [Event]
     
@@ -25,8 +25,8 @@ struct Venue {
     init(dictionary: [String : AnyObject]) {
         displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
         id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
-        lat = dictionary[SongKickClient.JSONResponseKeys.Lat] as! Double
-        lng = dictionary[SongKickClient.JSONResponseKeys.Lng] as! Double
+        lat = dictionary[SongKickClient.JSONResponseKeys.Lat] as? Double
+        lng = dictionary[SongKickClient.JSONResponseKeys.Lng] as? Double
         street = dictionary[SongKickClient.JSONResponseKeys.Street] as! String
     }
     

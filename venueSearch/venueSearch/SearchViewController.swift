@@ -23,8 +23,8 @@ class SearchView: UIViewController, UITextFieldDelegate {
     var tapRecognizer: UITapGestureRecognizer? = nil
     var zipLat: Double = 0.0
     var zipLon: Double = 0.0
-    var userLocality: String = ""
-    var userSubLocality: String = ""
+    var userLocality: String? = ""
+    var userSubLocality: String? = ""
 
 
     
@@ -79,12 +79,12 @@ class SearchView: UIViewController, UITextFieldDelegate {
         
     }
     
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField.text?.characters.count == 5 {
             forwardGeocoding(zipTextField.text!)
             searchButtonPressed(UIButton)
         }
-
         return true
     }
     
@@ -93,7 +93,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
     @IBAction func searchButtonPressed(sender: AnyObject) {
         print("searchButtonPressed")
         
-        if zipTextField.text?.characters.count < 5 {
+        if zipTextField.text?.characters.count !== 5 {
             launchAlertController("invalid zip code")
             return
         }
@@ -113,12 +113,12 @@ class SearchView: UIViewController, UITextFieldDelegate {
         //SongKickClient.sharedInstance().getMetroAreaID(zipLat, lon: zipLon, completionHandler: handlerForGetMetroArea)
         
         //start songkick venue search
-        if userSubLocality == "" {
-            SongKickClient.sharedInstance().getVenues(userLocality, completionHandler: handlerForGetVenues)
-        }
-        else {
-            SongKickClient.sharedInstance().getVenues(userSubLocality, completionHandler: handlerForGetVenues)
-        }
+//        if userSubLocality == "" {
+            SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
+//        }
+//        else {
+//            SongKickClient.sharedInstance().getVenues(userSubLocality, completionHandler: handlerForGetVenues)
+//        }
     }
     
 
@@ -192,6 +192,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         if (segue.identifier == "ShowVenueTableVC") {
             let viewController = segue.destinationViewController as! VenueTableView
             viewController.events = events
+            viewController.venues = venues
         }
     }
     
@@ -211,8 +212,8 @@ class SearchView: UIViewController, UITextFieldDelegate {
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
                 let location = placemark?.location
-                self.userSubLocality = placemark!.subLocality!
-                self.userLocality = placemark!.locality!
+                self.userSubLocality = placemark?.subLocality
+                self.userLocality = placemark?.locality
                 let coordinate = location?.coordinate
                 self.zipLat = coordinate!.latitude
                 self.zipLon = coordinate!.longitude
