@@ -16,6 +16,7 @@ struct Venue {
     var id = 0
     var lat = 0.0
     var lng = 0.0
+    var street = ""
     //var events: [Event]
     
     
@@ -26,10 +27,11 @@ struct Venue {
         id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
         lat = dictionary[SongKickClient.JSONResponseKeys.Lat] as! Double
         lng = dictionary[SongKickClient.JSONResponseKeys.Lng] as! Double
+        street = dictionary[SongKickClient.JSONResponseKeys.Street] as! String
     }
     
     //MARK: From dict
-    static func venueFromDictionary(results: [[String : AnyObject]]) -> [Venue] {
+    static func venuesFromDictionary(results: [[String : AnyObject]]) -> [Venue] {
         print("venueFromDictionary called")
         var venues = [Venue]()
         

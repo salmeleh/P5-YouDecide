@@ -17,6 +17,8 @@ class SongKickClient: NSObject {
     var userID : Int? = nil
     
     var events: [Event] = [Event]()
+    var venues: [Venue] = [Venue]()
+
     
     override init() {
         session = NSURLSession.sharedSession()
@@ -198,6 +200,79 @@ class SongKickClient: NSObject {
     }
     
     
+    //MARK: getVenues
+    func getVenues(search_query: String, completionHandler: (result: [Venue]?, error: String?) -> Void) {
+        print("getVenues called")
+        let params: [String : AnyObject] = ["query" : search_query, "apikey" : SongKickClient.Constants.apiKey]
+        let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.venues + SongKickClient.escapedParameters(params)
+        print("urlString: " + urlString)
+
+        let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            
+            guard (error == nil) else {
+                completionHandler(result: nil, error: "Connection Error")
+                return
+            }
+            guard let data = data else {
+                completionHandler(result: nil, error: "No data was returned")
+                return
+            }
+            
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
+                //print(parsedResult)
+            } catch {
+                parsedResult = nil
+                print("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            guard let resultsPageDictionary = parsedResult["resultsPage"] as? NSDictionary else {
+                print("Cannot find key 'resultsPage' in parsedResult")
+                return
+            }
+            
+            guard let totalVenues = resultsPageDictionary["totalEntries"] as? Int else {
+                let error: String = "Cannot find key 'totalEntries' in parsedResult"
+                print(error)
+                completionHandler(result: nil, error: error)
+                return
+            }
+            
+            if totalVenues > 0 {
+                guard let resultsDictionary = resultsPageDictionary["results"] as? [String : AnyObject] else {
+                    let error: String = "Cannot find key 'results' in resultsPageDictionary"
+                    print(error)
+                    completionHandler(result: nil, error: error)
+                    return
+                }
+                
+                if let venueArray = resultsDictionary["venue"] as? [[String : AnyObject]] {
+                    //print(venueArray)
+                    
+                    self.venues = Venue.venuesFromDictionary(venueArray)
+                    
+                    print(self.venues[0])
+                    
+                    completionHandler(result: self.venues, error: nil)
+                    return
+                }
+                
+            
+            }
+            else {
+                completionHandler(result: nil, error: "No venues in that metro area =[")
+                return
+            }
+        }
+        task.resume()
+
+        
+    }
     
     
     

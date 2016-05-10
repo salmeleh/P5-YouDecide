@@ -30,7 +30,6 @@ struct Event {
         id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
         performance = dictionary[SongKickClient.JSONResponseKeys.Performance] as! [[String : AnyObject]]
         venue = dictionary[SongKickClient.JSONResponseKeys.Venue] as? Venue
-        
     }
     
 
@@ -40,7 +39,7 @@ struct Event {
     static func eventsFromDictionary(results: [[String : AnyObject]]) -> [Event] {
         print("eventsFromDictionary called")
         var calendar = [Event]()
-        
+                
         for result in results {
             calendar.append(Event(dictionary: result))
         }

@@ -22,6 +22,7 @@ extension SongKickClient {
         static let location = "search/locations.json"
         static let metroAreas = "metro_areas/"
         static let calendars = "/calendar.json"
+        static let venues = "search/venues.json"
         
     }
     
@@ -44,6 +45,8 @@ extension SongKickClient {
         static let Performance = "performance"
         static let AgeRestriction = "ageRestriction"
         static let Venue = "venue"
+        
+        static let Street = "street"
     }
     
     
