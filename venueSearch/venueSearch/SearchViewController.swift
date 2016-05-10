@@ -67,23 +67,27 @@ class SearchView: UIViewController, UITextFieldDelegate {
 
 
     //MARK: textField delegate methods
-    //via http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
-        if(textField.text?.characters.count < 5) {return true}
-        else {
-            //calculate lat lng
-            forwardGeocoding(zipTextField.text!)
-            return false
-        }
-        
-    }
+    
+//    //via http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield
+//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+//        
+//        if(textField.text?.characters.count < 5) {return true}
+//        else {
+//            //calculate lat lng
+//            forwardGeocoding(zipTextField.text!)
+//            return false
+//        }
+//        
+//    }
     
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField.text?.characters.count == 5 {
             forwardGeocoding(zipTextField.text!)
             searchButtonPressed(UIButton)
+        }
+        if zipTextField.text?.characters.count !== 5 {
+            launchAlertController("invalid zip code")
         }
         return true
     }
@@ -217,9 +221,9 @@ class SearchView: UIViewController, UITextFieldDelegate {
                 let coordinate = location?.coordinate
                 self.zipLat = coordinate!.latitude
                 self.zipLon = coordinate!.longitude
-                print("lat: \(self.zipLat), lon: \(self.zipLon)")
-                print("sublocality: \(self.userSubLocality)")
-                print("locality: \(self.userLocality)")
+                //print("lat: \(self.zipLat), lon: \(self.zipLon)")
+                //print("sublocality: \(self.userSubLocality)")
+                //print("locality: \(self.userLocality)")
                 return
             }
         })

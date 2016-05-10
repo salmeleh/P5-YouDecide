@@ -28,10 +28,9 @@ class SongKickClient: NSObject {
     
     //MARK: getMetroAreaID
     func getMetroAreaID(lat: Double, lon: Double, completionHandler: (result: Int?, error: String?) -> Void) {
-        print("getMetroAreaID called")
+
         let params: [String : AnyObject] = ["location": "geo:\(lat),\(lon)", "apikey": SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.search + SongKickClient.Methods.location + SongKickClient.escapedParameters(params)
-        print("urlString: " + urlString)
         
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         
@@ -49,7 +48,6 @@ class SongKickClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
-                //print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
@@ -60,8 +58,6 @@ class SongKickClient: NSObject {
                 print("Cannot find key 'resultsPage' in parsedResult")
                 return
             }
-            //print(resultsPageDictionary)
-            
             
             guard let totalLocations = resultsPageDictionary["totalEntries"] as? Int else {
                 let error: String = "Cannot find key 'totalEntries' in parsedResult"
@@ -78,7 +74,6 @@ class SongKickClient: NSObject {
                     completionHandler(result: nil, error: error)
                     return
                 }
-                //print(resultsDictionary)
                 
                 guard let locationsArray = resultsDictionary["location"] as? [[String : AnyObject]] else {
                     let error: String = "Cannot find key 'location' in resultsDictionary"
@@ -86,7 +81,6 @@ class SongKickClient: NSObject {
                     completionHandler(result: nil, error: error)
                     return
                 }
-                //print(locationsArray[0])
                 
                 if let locationDictionary = locationsArray[0] as? [String : AnyObject] {
                     guard let metroArea = locationDictionary["metroArea"] as? [String : AnyObject] else {
@@ -118,10 +112,9 @@ class SongKickClient: NSObject {
     
     //MARK: getMAEvents
     func getMAEvents(metroAreaID: Int, completionHandler: (result: [Event]?, error: String?) -> Void) {
-        print("getMAEvents called")
+
         let params: [String : AnyObject] = ["apikey": SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.metroAreas + String(metroAreaID) + SongKickClient.Methods.calendars + SongKickClient.escapedParameters(params)
-        print("urlString: " + urlString)
         
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         
@@ -139,7 +132,6 @@ class SongKickClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
-                //print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
@@ -168,20 +160,10 @@ class SongKickClient: NSObject {
                 }
                 
                 if let eventsArray = resultsDictionary["event"] as? [[String : AnyObject]] {
-                    //print(eventsArray)
-                    
                     self.events = Event.eventsFromDictionary(eventsArray)
-                    
-                    
-                    //print(self.events[0])
-                    //print(self.events[0].venue?.displayName)
-                    
                     completionHandler(result: self.events, error: nil)
                     return
                 }
-                
-               
-                
                 
                 
             }
@@ -189,9 +171,6 @@ class SongKickClient: NSObject {
                 completionHandler(result: nil, error: "No events in that metro area =[")
                 return
             }
-            
-            
-            
             
             
         }
@@ -202,10 +181,9 @@ class SongKickClient: NSObject {
     
     //MARK: getVenues
     func getVenues(search_query: String, completionHandler: (result: [Venue]?, error: String?) -> Void) {
-        print("getVenues called")
+
         let params: [String : AnyObject] = ["query" : search_query, "apikey" : SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + SongKickClient.Methods.search + SongKickClient.Methods.venues + SongKickClient.escapedParameters(params)
-        print("urlString: " + urlString)
 
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         
@@ -224,7 +202,6 @@ class SongKickClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
-                //print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
@@ -252,12 +229,7 @@ class SongKickClient: NSObject {
                 }
                 
                 if let venueArray = resultsDictionary["venue"] as? [[String : AnyObject]] {
-                    //print(venueArray)
-                    
                     self.venues = Venue.venuesFromDictionary(venueArray)
-                    
-                    print(self.venues[0])
-                    
                     completionHandler(result: self.venues, error: nil)
                     return
                 }
@@ -277,10 +249,10 @@ class SongKickClient: NSObject {
     
     //MARK: getVenueCalendar
     func getVenueCalendar(venue_id: Int, completionHandler: (result: [Event]?, error: String?) -> Void) {
-        print("getVenueCalendarCalled")
+
         let params: [String : AnyObject] = ["apikey": SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + "venues/" + String(venue_id) + SongKickClient.Methods.calendars + SongKickClient.escapedParameters(params)
-        print("urlString: " + urlString)
+        
         let request = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         
         let session = NSURLSession.sharedSession()
@@ -297,7 +269,6 @@ class SongKickClient: NSObject {
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as! NSDictionary
-                //print(parsedResult)
             } catch {
                 parsedResult = nil
                 print("Could not parse the data as JSON: '\(data)'")
@@ -326,18 +297,11 @@ class SongKickClient: NSObject {
                 }
                 
                 if let eventsArray = resultsDictionary["event"] as? [[String : AnyObject]] {
-                    //print(eventsArray)
-                    
                     self.events = Event.eventsFromDictionary(eventsArray)
-                    
-                    
-                    //print(self.events[0])
-                    //print(self.events[0].venue?.displayName)
                     
                     completionHandler(result: self.events, error: nil)
                     return
                 }
-                
                 
                 
             }
@@ -350,7 +314,6 @@ class SongKickClient: NSObject {
         }
         task.resume()
 
-        
         
     }
     

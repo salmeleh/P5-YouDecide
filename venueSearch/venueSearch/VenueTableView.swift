@@ -20,7 +20,11 @@ class VenueTableView: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+    
+        loadingWheel.hidesWhenStopped = true
+        loadingWheel.hidden = true
+    
     }
     
     
@@ -44,6 +48,10 @@ class VenueTableView: UITableViewController {
 
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //start loading animation
+        loadingWheel.hidden = false
+        loadingWheel.startAnimating()
+        
         //pull up calendar of events for venue
         let venueID = venues[indexPath.row].id
         SongKickClient.sharedInstance().getVenueCalendar(venueID, completionHandler: handlerForGetVenueCalendar)
@@ -59,7 +67,7 @@ class VenueTableView: UITableViewController {
         }
         else {
             dispatch_async(dispatch_get_main_queue(), {
-                //self.loadingWheel.stopAnimating()
+                self.loadingWheel.stopAnimating()
                 self.launchAlertController(error!)
             })
         }
