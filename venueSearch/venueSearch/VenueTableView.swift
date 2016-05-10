@@ -51,7 +51,7 @@ class VenueTableView: UITableViewController {
         if error == nil {
             print("getVenueCalendar returned no error. # of events: \((result?.count)!)")
             self.events = result!
-            self.performSegueWithIdentifier("showVenueCalendarTVC", sender: nil)
+            getVenueCalendarCompleted()
         }
         else {
             dispatch_async(dispatch_get_main_queue(), {
@@ -61,7 +61,15 @@ class VenueTableView: UITableViewController {
         }
     }
     
-    
+    func getVenueCalendarCompleted() {
+        dispatch_async(dispatch_get_main_queue(), {
+            //stop loading animation
+            self.loadingWheel.stopAnimating()
+            
+            //show venueTableView
+            self.performSegueWithIdentifier("showVenueCalendarTVC", sender: nil)
+        })
+    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
