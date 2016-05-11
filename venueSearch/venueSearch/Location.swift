@@ -44,11 +44,11 @@ class Location : NSManagedObject {
     }
     
     //MARK: from dict
-    static func locationsFromDictionary(results: [[String : AnyObject]]) -> [Location] {
+    static func locationsFromDictionary(results: [[String : AnyObject]], context: NSManagedObjectContext) -> [Location] {
         var locations = [Location]()
         
         for result in results {
-            locations.append(Location(dictionary: result))
+            locations.append(Location(dictionary: result, context: context))
         }
         
         return locations

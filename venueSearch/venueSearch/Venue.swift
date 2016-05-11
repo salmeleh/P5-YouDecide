@@ -41,11 +41,11 @@ class Venue : NSManagedObject {
     }
     
     //MARK: From dict
-    static func venuesFromDictionary(results: [[String : AnyObject]]) -> [Venue] {
+    static func venuesFromDictionary(results: [[String : AnyObject]], context: NSManagedObjectContext) -> [Venue] {
         var venues = [Venue]()
         
         for result in results {
-            venues.append(Venue(dictionary: result))
+            venues.append(Venue(dictionary: result, context: context))
         }
         
         return venues

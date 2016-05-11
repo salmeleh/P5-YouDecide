@@ -46,11 +46,11 @@ class Event : NSManagedObject {
     
     
     //MARK: From dict
-    static func eventsFromDictionary(results: [[String : AnyObject]]) -> [Event] {
+    static func eventsFromDictionary(results: [[String : AnyObject]], context: NSManagedObjectContext) -> [Event] {
         var calendar = [Event]()
                 
         for result in results {
-            calendar.append(Event(dictionary: result))
+            calendar.append(Event(dictionary: result, context: context))
         }
         
         return calendar
