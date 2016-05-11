@@ -29,6 +29,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
 
 
     
+    
     //MARK: view...
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +45,6 @@ class SearchView: UIViewController, UITextFieldDelegate {
         imageView.image = UIImage(named: "skSmallBadge")
         
         
-//        /////temporarily hardcode coordiantes for testing (Wrigley Field)//////
-//        zipLat = 41.9484
-//        zipLon = -87.6553
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -69,6 +67,8 @@ class SearchView: UIViewController, UITextFieldDelegate {
         self.unsubscribeToKeyboardNotifications()
     }
 
+    
+  
     
 
     //MARK: textField delegate methods

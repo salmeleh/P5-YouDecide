@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class SongKickClient: NSObject {
     
@@ -23,6 +24,10 @@ class SongKickClient: NSObject {
     override init() {
         session = NSURLSession.sharedSession()
         super.init()
+    }
+    
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
     
@@ -160,7 +165,7 @@ class SongKickClient: NSObject {
                 }
                 
                 if let eventsArray = resultsDictionary["event"] as? [[String : AnyObject]] {
-                    self.events = Event.eventsFromDictionary(eventsArray)
+                    self.events = Event.eventsFromDictionary(eventsArray, context: self.sharedContext)
                     completionHandler(result: self.events, error: nil)
                     return
                 }
@@ -229,7 +234,7 @@ class SongKickClient: NSObject {
                 }
                 
                 if let venueArray = resultsDictionary["venue"] as? [[String : AnyObject]] {
-                    self.venues = Venue.venuesFromDictionary(venueArray)
+                    self.venues = Venue.venuesFromDictionary(venueArray, context: self.sharedContext)
                     completionHandler(result: self.venues, error: nil)
                     return
                 }
@@ -297,7 +302,7 @@ class SongKickClient: NSObject {
                 }
                 
                 if let eventsArray = resultsDictionary["event"] as? [[String : AnyObject]] {
-                    self.events = Event.eventsFromDictionary(eventsArray)
+                    self.events = Event.eventsFromDictionary(eventsArray, context: self.sharedContext)
                     
                     completionHandler(result: self.events, error: nil)
                     return
