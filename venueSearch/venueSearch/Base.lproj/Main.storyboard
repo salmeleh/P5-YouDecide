@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -33,43 +35,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a zip code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c80-lB-7bi">
-                                <rect key="frame" x="238" y="240" width="124" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2l1-dD-kIp">
-                                <rect key="frame" x="276" y="550" width="48" height="30"/>
-                                <state key="normal" title="Search"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2l1-dD-kIp">
+                                <rect key="frame" x="272" y="455" width="56" height="38"/>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="18"/>
+                                <state key="normal" title="search">
+                                    <color key="titleColor" red="0.97254901960784312" green="0.0" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="searchButtonPressed:" destination="QNg-fN-dOp" eventType="touchUpInside" id="wWI-Fr-ueq"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bIc-2W-nsB">
-                                <rect key="frame" x="268" y="285" width="65" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="00000" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bIc-2W-nsB">
+                                <rect key="frame" x="268" y="176" width="65" height="30"/>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="SQD-t4-N5R">
-                                <rect key="frame" x="282" y="415" width="37" height="37"/>
-                                <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="282" y="282" width="37" height="37"/>
+                                <color key="color" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hjb-nB-bNY">
+                                <rect key="frame" x="535" y="535" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hjb-nB-bNY" secondAttribute="height" multiplier="1:1" id="Wq4-6h-Qcw"/>
+                                    <constraint firstAttribute="width" constant="45" id="dAH-Dm-eN1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="enter a zip code to find local venues" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c80-lB-7bi">
+                                <rect key="frame" x="150" y="128" width="300" height="29"/>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="18"/>
+                                <color key="textColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2l1-dD-kIp" firstAttribute="top" secondItem="SQD-t4-N5R" secondAttribute="bottom" constant="98" id="4MM-Eh-nVV"/>
-                            <constraint firstItem="bIc-2W-nsB" firstAttribute="centerY" secondItem="ob9-Cr-df2" secondAttribute="centerY" id="8Gs-dq-SiG"/>
-                            <constraint firstItem="c80-lB-7bi" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="Hb8-kA-GvP"/>
-                            <constraint firstItem="bIc-2W-nsB" firstAttribute="top" secondItem="c80-lB-7bi" secondAttribute="bottom" constant="24" id="Vle-2W-qYz"/>
-                            <constraint firstItem="bIc-2W-nsB" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="aMx-BY-xfG"/>
-                            <constraint firstItem="4nT-ic-vBJ" firstAttribute="top" secondItem="2l1-dD-kIp" secondAttribute="bottom" constant="20" id="cpb-ih-ZBy"/>
-                            <constraint firstItem="SQD-t4-N5R" firstAttribute="centerX" secondItem="2l1-dD-kIp" secondAttribute="centerX" id="iRn-Ur-8c6"/>
-                            <constraint firstItem="2l1-dD-kIp" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="jX9-kM-Cy1"/>
+                            <constraint firstItem="c80-lB-7bi" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="5GX-YE-C71"/>
+                            <constraint firstItem="hjb-nB-bNY" firstAttribute="trailing" secondItem="ob9-Cr-df2" secondAttribute="trailingMargin" id="8e0-sk-Bri"/>
+                            <constraint firstItem="bIc-2W-nsB" firstAttribute="top" secondItem="c80-lB-7bi" secondAttribute="bottom" constant="19" id="DQe-kd-aT8"/>
+                            <constraint firstItem="bIc-2W-nsB" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="Ekd-xm-IzU"/>
+                            <constraint firstItem="4nT-ic-vBJ" firstAttribute="top" secondItem="2l1-dD-kIp" secondAttribute="bottom" constant="111" id="Oeo-bw-xgU"/>
+                            <constraint firstItem="4nT-ic-vBJ" firstAttribute="top" secondItem="hjb-nB-bNY" secondAttribute="bottom" constant="20" id="RTS-mt-qRs"/>
+                            <constraint firstItem="c80-lB-7bi" firstAttribute="top" secondItem="vbB-VX-dBf" secondAttribute="bottom" constant="64" id="Wyl-t2-KbO"/>
+                            <constraint firstItem="hjb-nB-bNY" firstAttribute="trailing" secondItem="ob9-Cr-df2" secondAttribute="trailingMargin" id="Zuh-PS-Owm"/>
+                            <constraint firstItem="SQD-t4-N5R" firstAttribute="centerY" secondItem="ob9-Cr-df2" secondAttribute="centerY" id="c8w-uy-EKW"/>
+                            <constraint firstItem="SQD-t4-N5R" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="gFW-6f-SCf"/>
+                            <constraint firstItem="2l1-dD-kIp" firstAttribute="centerX" secondItem="ob9-Cr-df2" secondAttribute="centerX" id="tYW-DM-aFC"/>
+                            <constraint firstAttribute="bottom" secondItem="hjb-nB-bNY" secondAttribute="bottom" constant="20" symbolic="YES" id="yHW-gr-5vX"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8e0-sk-Bri"/>
+                                <exclude reference="yHW-gr-5vX"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="wk0-ta-aMS"/>
                     <connections>
+                        <outlet property="imageView" destination="hjb-nB-bNY" id="THv-OR-V9o"/>
                         <outlet property="loadingWheel" destination="SQD-t4-N5R" id="1Cx-5j-76h"/>
                         <outlet property="searchButton" destination="2l1-dD-kIp" id="Opl-YQ-akf"/>
                         <outlet property="zipTextField" destination="bIc-2W-nsB" id="Sgx-dv-ttB"/>
@@ -88,10 +111,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="mp0-ua-svg">
                             <rect key="frame" x="0.0" y="142" width="600" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="color" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="color" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                         </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="venueTVC" textLabel="Hbd-N6-IKQ" detailTextLabel="XBN-FK-6lA" rowHeight="50" style="IBUITableViewCellStyleValue1" id="D26-8J-JnA">
@@ -124,6 +149,11 @@
                             <outlet property="delegate" destination="LOi-h7-uqd" id="VBE-an-Tm8"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="Hrz-XZ-ZGY"/>
+                        <barButtonItem title="Item" id="CYy-N8-HOu"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loadingWheel" destination="mp0-ua-svg" id="TGu-YG-9J0"/>
                         <segue destination="j6o-cH-FbV" kind="show" identifier="showVenueCalendarTVC" id="yJy-TP-snF"/>
@@ -141,6 +171,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="venueCalendarTVC" textLabel="ph0-Ue-SIw" rowHeight="50" style="IBUITableViewCellStyleDefault" id="Inl-wL-xJ2">
                                 <rect key="frame" x="0.0" y="92" width="600" height="50"/>

@@ -24,7 +24,9 @@ class VenueTableView: UITableViewController {
     
         loadingWheel.hidesWhenStopped = true
         loadingWheel.hidden = true
-    
+        
+        self.navigationController!.navigationBar.tintColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
+
     }
     
     

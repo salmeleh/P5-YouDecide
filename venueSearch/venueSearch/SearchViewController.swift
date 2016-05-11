@@ -19,6 +19,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
     var events: [Event] = [Event]()
     var venues: [Venue] = [Venue]()
 
+    @IBOutlet weak var imageView: UIImageView!
     
     var tapRecognizer: UITapGestureRecognizer? = nil
     var zipLat: Double = 0.0
@@ -39,6 +40,8 @@ class SearchView: UIViewController, UITextFieldDelegate {
         loadingWheel.hidden = true
         
         zipTextField.delegate = self
+        
+        imageView.image = UIImage(named: "skSmallBadge")
         
 //        /////temporarily hardcode coordiantes for testing (Wrigley Field)//////
 //        zipLat = 41.9484
