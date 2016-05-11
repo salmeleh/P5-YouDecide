@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class VenuteTableViewCell: UITableViewCell {
+class VenueTableViewCell: UITableViewCell {
     
     let skPink: UIColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
     
