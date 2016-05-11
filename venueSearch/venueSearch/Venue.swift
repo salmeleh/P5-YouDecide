@@ -14,7 +14,7 @@ class Venue : NSManagedObject {
     
     //MARK: Properties
     @NSManaged var displayName: String
-    @NSManaged var id: Int
+    @NSManaged var id: Int64
     @NSManaged var lat: Double
     @NSManaged var lng: Double
     @NSManaged var street: String
@@ -34,7 +34,7 @@ class Venue : NSManagedObject {
         
         //dictionary
         displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
-        id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
+        id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int64
         lat = dictionary[SongKickClient.JSONResponseKeys.Lat] as! Double
         lng = dictionary[SongKickClient.JSONResponseKeys.Lng] as! Double
         street = dictionary[SongKickClient.JSONResponseKeys.Street] as! String
