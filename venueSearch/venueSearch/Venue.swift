@@ -6,27 +6,37 @@
 //  Copyright © 2016 Stu Almeleh. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
-struct Venue {
+@objc(Venue)
+
+class Venue : NSManagedObject {
     
     //MARK: Properties
-    var displayName = ""
-    var id = 0
-    var lat: Double?
-    var lng: Double?
-    var street = ""
+    @NSManaged var displayName: String
+    @NSManaged var id: Int
+    @NSManaged var lat: Double
+    @NSManaged var lng: Double
+    @NSManaged var street: String
     //var events: [Event]
     
     
     
     //MARK: Init
-    init(dictionary: [String : AnyObject]) {
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    init(dictionary: [String : AnyObject], context: NSManagedObjectContext) {
+        //core data
+        let entity =  NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)!
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+        
+        //dictionary
         displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
         id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
-        lat = dictionary[SongKickClient.JSONResponseKeys.Lat] as? Double
-        lng = dictionary[SongKickClient.JSONResponseKeys.Lng] as? Double
+        lat = dictionary[SongKickClient.JSONResponseKeys.Lat] as! Double
+        lng = dictionary[SongKickClient.JSONResponseKeys.Lng] as! Double
         street = dictionary[SongKickClient.JSONResponseKeys.Street] as! String
     }
     

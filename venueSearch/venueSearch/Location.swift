@@ -6,30 +6,40 @@
 //  Copyright © 2016 Stu Almeleh. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
-struct Location {
+@objc(Location)
+
+class Location : NSManagedObject {
     
     //MARK: Properites
-    var country: String
-    var displayName: String
-    var id: Int
-    var lat: Double
-    var lng: Double
-    var state: String
-    var uri: String
+    @NSManaged var country: String
+    @NSManaged var displayName: String
+    @NSManaged var id: Int
+    @NSManaged var lat: Double
+    @NSManaged var lng: Double
+    @NSManaged var state: String
+    @NSManaged var uri: String
     
     
     //MARK: init
-    init(dictionary: [String : AnyObject]) {
-        self.country = dictionary[SongKickClient.JSONResponseKeys.Country] as! String
-        self.displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
-        self.id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
-        self.lat = dictionary[SongKickClient.JSONResponseKeys.Lat] as! Double
-        self.lng = dictionary[SongKickClient.JSONResponseKeys.Lng] as! Double
-        self.state = dictionary[SongKickClient.JSONResponseKeys.State] as! String
-        self.uri = dictionary[SongKickClient.JSONResponseKeys.URI] as! String
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    init(dictionary: [String : AnyObject], context: NSManagedObjectContext) {
+        //core data
+        let entity =  NSEntityDescription.entityForName("Location", inManagedObjectContext: context)!
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+        
+        //dicitonary
+        country = dictionary[SongKickClient.JSONResponseKeys.Country] as! String
+        displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
+        id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
+        lat = dictionary[SongKickClient.JSONResponseKeys.Lat] as! Double
+        lng = dictionary[SongKickClient.JSONResponseKeys.Lng] as! Double
+        state = dictionary[SongKickClient.JSONResponseKeys.State] as! String
+        uri = dictionary[SongKickClient.JSONResponseKeys.URI] as! String
         
     }
     

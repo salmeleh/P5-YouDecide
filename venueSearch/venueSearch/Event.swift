@@ -5,24 +5,34 @@
 //  Created by Stu Almeleh on 5/5/16.
 //  Copyright © 2016 Stu Almeleh. All rights reserved.
 //
-
-import Foundation
+ 
 import CoreData
 
-struct Event {
+@objc(Event)
+
+class Event : NSManagedObject {
     
     //MARK: Properties
-    var displayName = ""
-    var start: [String : AnyObject]
-    var popularity = 0.0
-    var location: [String: AnyObject]
-    var id = 0
-    var performance: [[String : AnyObject]]
-    var venue: Venue?
+    @NSManaged var displayName: String
+    @NSManaged var start: [String : AnyObject]
+    @NSManaged var popularity: Double
+    @NSManaged var location: [String: AnyObject]
+    @NSManaged var id: Int
+    @NSManaged var performance: [[String : AnyObject]]
+    @NSManaged var venue: Venue?
     
     
     //MARK: Init
-    init(dictionary: [String : AnyObject]) {
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    init(dictionary: [String : AnyObject], context: NSManagedObjectContext) {
+        //core data
+        let entity =  NSEntityDescription.entityForName("Event", inManagedObjectContext: context)!
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+        
+        //dictionary
         displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
         start = dictionary[SongKickClient.JSONResponseKeys.Start] as! [String : AnyObject]
         popularity = dictionary[SongKickClient.JSONResponseKeys.Popularity] as! Double

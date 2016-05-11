@@ -69,6 +69,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         self.unsubscribeToKeyboardNotifications()
     }
 
+    
 
     //MARK: textField delegate methods
     
