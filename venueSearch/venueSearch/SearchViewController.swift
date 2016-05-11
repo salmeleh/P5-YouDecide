@@ -43,6 +43,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         
         imageView.image = UIImage(named: "skSmallBadge")
         
+        
 //        /////temporarily hardcode coordiantes for testing (Wrigley Field)//////
 //        zipLat = 41.9484
 //        zipLon = -87.6553
@@ -82,6 +83,11 @@ class SearchView: UIViewController, UITextFieldDelegate {
 //        }
 //        
 //    }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        venues.removeAll()
+        events.removeAll()
+        userLocality = ""
+    }
     
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

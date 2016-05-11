@@ -150,10 +150,7 @@
                             <outlet property="delegate" destination="LOi-h7-uqd" id="VBE-an-Tm8"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="Hrz-XZ-ZGY"/>
-                        <barButtonItem title="Item" id="CYy-N8-HOu"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loadingWheel" destination="mp0-ua-svg" id="TGu-YG-9J0"/>
