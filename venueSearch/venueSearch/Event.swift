@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+@objc(Event)
+
 class Event : NSManagedObject {
     
     //MARK: Properties

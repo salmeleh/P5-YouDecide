@@ -120,49 +120,42 @@ class SearchView: UIViewController, UITextFieldDelegate {
         loadingWheel.hidden = false
         loadingWheel.startAnimating()
         
-        
-        //songkick venue search
-//        if userSubLocality == "" {
-            SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
-//        }
-//        else {
-//            SongKickClient.sharedInstance().getVenues(userSubLocality, completionHandler: handlerForGetVenues)
-//        }
+        SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
     }
     
 
     
     //MARK: completionhandlers
-    func handlerForGetMetroArea(metroAreaID: Int?, error: String?) -> Void {
-        if error == nil {
-            print("getMetroArea returned no error. metroAreaID is: \(metroAreaID!)")
-            //getMAEvents
-            SongKickClient.sharedInstance().getMAEvents(metroAreaID!, completionHandler: handlerForGetMAEvents)
-            
-        }
-        else {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.loadingWheel.stopAnimating()
-                self.launchAlertController(error!)
-            })
-        }
-    }
-    
-    
-    
-    func handlerForGetMAEvents(result: [Event]?, error: String?) -> Void {
-        if error == nil {
-            print("getMetroAreaEvents returned no error. # of events: \((result?.count)!)")
-            self.events = result!
-            getMetroAreaEventsComplete()
-        }
-        else {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.loadingWheel.stopAnimating()
-                self.launchAlertController(error!)
-            })
-        }
-    }
+//    func handlerForGetMetroArea(metroAreaID: Int?, error: String?) -> Void {
+//        if error == nil {
+//            print("getMetroArea returned no error. metroAreaID is: \(metroAreaID!)")
+//            //getMAEvents
+//            SongKickClient.sharedInstance().getMAEvents(metroAreaID!, completionHandler: handlerForGetMAEvents)
+//            
+//        }
+//        else {
+//            dispatch_async(dispatch_get_main_queue(), {
+//                self.loadingWheel.stopAnimating()
+//                self.launchAlertController(error!)
+//            })
+//        }
+//    }
+//    
+//    
+//    
+//    func handlerForGetMAEvents(result: [Event]?, error: String?) -> Void {
+//        if error == nil {
+//            print("getMetroAreaEvents returned no error. # of events: \((result?.count)!)")
+//            self.events = result!
+//            getMetroAreaEventsComplete()
+//        }
+//        else {
+//            dispatch_async(dispatch_get_main_queue(), {
+//                self.loadingWheel.stopAnimating()
+//                self.launchAlertController(error!)
+//            })
+//        }
+//    }
     
     
     func handlerForGetVenues(result: [Venue]?, error: String?) -> Void {

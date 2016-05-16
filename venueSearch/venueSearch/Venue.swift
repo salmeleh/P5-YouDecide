@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+@objc(Venue)
+
 class Venue : NSManagedObject {
     
     //MARK: Properties
