@@ -9,20 +9,31 @@
 import Foundation
 import CoreData
 
-struct Event {
+class Event : NSManagedObject {
     
     //MARK: Properties
-    var displayName = ""
-    var start: [String : AnyObject]
-    var popularity = 0.0
-    var location: [String: AnyObject]
-    var id = 0
-    var performance: [[String : AnyObject]]
-    var venue: Venue?
+    @NSManaged var displayName: String
+    @NSManaged var start: [String : AnyObject]
+    @NSManaged var popularity: Double
+    @NSManaged var location: [String: AnyObject]
+    @NSManaged var id: Int
+    @NSManaged var performance: [[String : AnyObject]]
+    @NSManaged var venue: Venue?
     
+    
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
     
     //MARK: Init
-    init(dictionary: [String : AnyObject]) {
+    init(dictionary: [String : AnyObject], context: NSManagedObjectContext) {
+        
+        //Core Data
+        let entity =  NSEntityDescription.entityForName("Event", inManagedObjectContext: context)!
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+        
+        
+        //Dictionary
         displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
         start = dictionary[SongKickClient.JSONResponseKeys.Start] as! [String : AnyObject]
         popularity = dictionary[SongKickClient.JSONResponseKeys.Popularity] as! Double
@@ -35,12 +46,12 @@ struct Event {
 
     
     
-    //MARK: From dict
-    static func eventsFromDictionary(results: [[String : AnyObject]]) -> [Event] {
+    //MARK: from dict
+    static func eventsFromDictionary(results: [[String : AnyObject]], context: NSManagedObjectContext) -> [Event] {
         var calendar = [Event]()
                 
         for result in results {
-            calendar.append(Event(dictionary: result))
+            calendar.append(Event(dictionary: result, context: context))
         }
         
         return calendar
