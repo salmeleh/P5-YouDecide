@@ -26,7 +26,7 @@ class SongKickClient: NSObject {
         super.init()
     }
     
-    
+    //MARK: shared instance
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }

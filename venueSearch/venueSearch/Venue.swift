@@ -40,6 +40,7 @@ class Venue : NSManagedObject {
         street = dictionary[SongKickClient.JSONResponseKeys.Street] as! String
     }
     
+    
     //MARK: from dict
     static func venuesFromDictionary(results: [[String : AnyObject]], context: NSManagedObjectContext) -> [Venue] {
         var venues = [Venue]()

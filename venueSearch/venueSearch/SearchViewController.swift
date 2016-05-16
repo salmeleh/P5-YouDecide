@@ -43,6 +43,8 @@ class SearchView: UIViewController, UITextFieldDelegate {
         
         imageView.image = UIImage(named: "skSmallBadge")
         
+        venues = fetchAllVenues()
+        
         
 //        /////temporarily hardcode coordiantes for testing (Wrigley Field)//////
 //        zipLat = 41.9484
@@ -69,9 +71,27 @@ class SearchView: UIViewController, UITextFieldDelegate {
         self.unsubscribeToKeyboardNotifications()
     }
 
+    
+    
+    //MARK: shared instance
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }
+    
+    
+    func fetchAllVenues() -> [Venue] {
+        let fetchRequest = NSFetchRequest(entityName: "Venue")
+        do {
+            return try sharedContext.executeFetchRequest(fetchRequest) as! [Venue]
+        } catch let error as NSError {
+            print("Error in fetchAllVenues(): \(error)")
+            return [Venue]()
+        }
+    }
+    
+    
 
     //MARK: textField delegate methods
-    
 //    //via http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield
 //    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
 //        
@@ -162,6 +182,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         if error == nil {
             print("getVenues returned no error. # of venues: \((result?.count)!)")
             self.venues = result!
+            CoreDataStackManager.sharedInstance().saveContext()
             getMetroAreaEventsComplete()
         }
         else {

@@ -65,6 +65,7 @@ class VenueTableView: UITableViewController {
         if error == nil {
             print("getVenueCalendar returned no error. # of events: \((result?.count)!)")
             self.events = result!
+            CoreDataStackManager.sharedInstance().saveContext()
             getVenueCalendarCompleted()
         }
         else {
