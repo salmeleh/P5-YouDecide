@@ -253,7 +253,7 @@ class SongKickClient: NSObject {
     
     
     //MARK: getVenueCalendar
-    func getVenueCalendar(venue_id: Int, completionHandler: (result: [Event]?, error: String?) -> Void) {
+    func getVenueCalendar(venue_id: Int64, completionHandler: (result: [Event]?, error: String?) -> Void) {
 
         let params: [String : AnyObject] = ["apikey": SongKickClient.Constants.apiKey]
         let urlString = SongKickClient.Constants.songKickBaseURL + "venues/" + String(venue_id) + SongKickClient.Methods.calendars + SongKickClient.escapedParameters(params)

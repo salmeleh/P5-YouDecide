@@ -134,10 +134,10 @@
 				20B802EE1CDA42E900268C12 /* Assets.xcassets */,
 				20B803151CDA467D00268C12 /* Controller */,
 				202BCBAC1CDA72D8004025BB /* SongKick */,
-				20B802F01CDA42E900268C12 /* LaunchScreen.storyboard */,
 				20B802F31CDA42E900268C12 /* Info.plist */,
 				20B802E71CDA42E900268C12 /* AppDelegate.swift */,
 				202DB5281CE37C32004D9A06 /* CoreDataStackManager.swift */,
+				20B802F01CDA42E900268C12 /* LaunchScreen.storyboard */,
 			);
 			path = venueSearch;
 			sourceTree = "<group>";

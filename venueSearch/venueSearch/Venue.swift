@@ -17,9 +17,7 @@ class Venue : NSManagedObject {
     @NSManaged var id: Int64
     @NSManaged var lat: Double
     @NSManaged var lng: Double
-    @NSManaged var street: String
-    //var events: [Event]
-    
+    @NSManaged var street: String    
     
     
     //MARK: Init

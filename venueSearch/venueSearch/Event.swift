@@ -14,11 +14,8 @@ class Event : NSManagedObject {
     
     //MARK: Properties
     @NSManaged var displayName: String
-    @NSManaged var start: [String : AnyObject]
     @NSManaged var popularity: Double
-    @NSManaged var location: [String: AnyObject]
     @NSManaged var id: Int64
-    @NSManaged var performance: [[String : AnyObject]]
     @NSManaged var venue: Venue?
     
     
@@ -34,11 +31,8 @@ class Event : NSManagedObject {
         
         //dictionary
         displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
-        start = dictionary[SongKickClient.JSONResponseKeys.Start] as! [String : AnyObject]
         popularity = dictionary[SongKickClient.JSONResponseKeys.Popularity] as! Double
-        location = dictionary[SongKickClient.JSONResponseKeys.Location] as! [String: AnyObject]
         id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int64
-        performance = dictionary[SongKickClient.JSONResponseKeys.Performance] as! [[String : AnyObject]]
         venue = dictionary[SongKickClient.JSONResponseKeys.Venue] as? Venue
     }
     
