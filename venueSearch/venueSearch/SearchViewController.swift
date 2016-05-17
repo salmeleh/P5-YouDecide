@@ -43,33 +43,26 @@ class SearchView: UIViewController, UITextFieldDelegate {
         
         imageView.image = UIImage(named: "skSmallBadge")
         
-        venues = fetchAllVenues()
-        
-        
-//        /////temporarily hardcode coordiantes for testing (Wrigley Field)//////
-//        zipLat = 41.9484
-//        zipLon = -87.6553
     }
 
     
-    ///KEYBOARD RECOGNIZERS NOT NEEDED -- ONLY TEXTBOX IS HIGH ENOUGH////
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        /* Add tap recognizer to dismiss keyboard */
+
+        //add tap recognizer
         self.addKeyboardDismissRecognizer()
         
-//        /* Subscribe to keyboard events so we can adjust the view to show hidden controls */
+//        //subscribe to keyboard events so we can adjust the view to show hidden controls
 //        self.subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        /* Remove tap recognizer */
+        //remove tap recognizer
         self.removeKeyboardDismissRecognizer()
         
-//        /* Unsubscribe to all keyboard events */
+//        //nsubscribe to all keyboard events
 //        self.unsubscribeToKeyboardNotifications()
     }
 
@@ -80,49 +73,15 @@ class SearchView: UIViewController, UITextFieldDelegate {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
-    
-    func fetchAllVenues() -> [Venue] {
-        let fetchRequest = NSFetchRequest(entityName: "Venue")
-        do {
-            return try sharedContext.executeFetchRequest(fetchRequest) as! [Venue]
-        } catch let error as NSError {
-            print("Error in fetchAllVenues(): \(error)")
-            return [Venue]()
-        }
-    }
-    
-    
 
     //MARK: textField delegate methods
     func textFieldDidBeginEditing(textField: UITextField) {
-        venues.removeAll()
-        events.removeAll()
         userLocality = ""
-        
-        CoreDataStackManager.sharedInstance().saveContext()
     }
-    
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        if textField.text?.characters.count == 5 {
-            return true
-        }
-        else {return false}
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        if textField.text?.characters.count == 5 {
-            forwardGeocoding(zipTextField.text!)
-        }
-    }
-    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField.text?.characters.count == 5 {
-            forwardGeocoding(zipTextField.text!)
             searchButtonPressed(UIButton)
-        }
-        if zipTextField.text?.characters.count !== 5 {
-            launchAlertController("invalid zip code")
         }
         return true
     }
@@ -142,78 +101,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
             return
         }
         
-        
-        //start loading animation
-        loadingWheel.hidden = false
-        loadingWheel.startAnimating()
-        
-        SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
-    }
-    
-
-    
-    //MARK: completionhandlers
-//    func handlerForGetMetroArea(metroAreaID: Int?, error: String?) -> Void {
-//        if error == nil {
-//            print("getMetroArea returned no error. metroAreaID is: \(metroAreaID!)")
-//            //getMAEvents
-//            SongKickClient.sharedInstance().getMAEvents(metroAreaID!, completionHandler: handlerForGetMAEvents)
-//            
-//        }
-//        else {
-//            dispatch_async(dispatch_get_main_queue(), {
-//                self.loadingWheel.stopAnimating()
-//                self.launchAlertController(error!)
-//            })
-//        }
-//    }
-//    
-//    
-//    
-//    func handlerForGetMAEvents(result: [Event]?, error: String?) -> Void {
-//        if error == nil {
-//            print("getMetroAreaEvents returned no error. # of events: \((result?.count)!)")
-//            self.events = result!
-//            getMetroAreaEventsComplete()
-//        }
-//        else {
-//            dispatch_async(dispatch_get_main_queue(), {
-//                self.loadingWheel.stopAnimating()
-//                self.launchAlertController(error!)
-//            })
-//        }
-//    }
-    
-    
-    func handlerForGetVenues(result: [Venue]?, error: String?) -> Void {
-        if error == nil {
-            print("getVenues returned no error. # of venues: \((result?.count)!)")
-            self.venues = result!
-            dispatch_async(dispatch_get_main_queue(), {
-                CoreDataStackManager.sharedInstance().saveContext()
-            })
-            getMetroAreaEventsComplete()
-        }
-        else {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.loadingWheel.stopAnimating()
-                self.launchAlertController(error!)
-            })
-        }
-    }
-    
-    
-    
-    
-    func getMetroAreaEventsComplete() {
-        dispatch_async(dispatch_get_main_queue(), {
-            //stop loading animation
-            self.loadingWheel.stopAnimating()
-            
-            //show venueTableView
-            self.performSegueWithIdentifier("ShowVenueTableVC", sender: nil)
-        })
-        
+        performSegueWithIdentifier("ShowVenueTableVC", sender: userLocality)
         
     }
     
@@ -223,8 +111,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ShowVenueTableVC") {
             let viewController = segue.destinationViewController as! VenueTableView
-            viewController.events = events
-            viewController.venues = venues
+            viewController.userLocality = sender as! String
         }
     }
     
@@ -246,18 +133,15 @@ class SearchView: UIViewController, UITextFieldDelegate {
                 let location = placemark?.location
                 self.userSubLocality = placemark?.subLocality
                 self.userLocality = placemark?.locality
-                let coordinate = location?.coordinate
-                self.zipLat = coordinate!.latitude
-                self.zipLon = coordinate!.longitude
+                print(self.userLocality)
+//                let coordinate = location?.coordinate
+//                self.zipLat = coordinate!.latitude
+//                self.zipLon = coordinate!.longitude
 
                 return
             }
         })
     }
-    
-    
-    
-    
     
     
     
@@ -278,9 +162,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
     }
     
     
-    
-    
-    
+  
     
     // MARK: Show/Hide Keyboard
     func addKeyboardDismissRecognizer() {

@@ -114,7 +114,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="mp0-ua-svg">
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="mp0-ua-svg">
                             <rect key="frame" x="0.0" y="142" width="600" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="color" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -187,6 +187,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="G21-tq-4pu">
+                            <rect key="frame" x="0.0" y="142" width="600" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="venueCalendarTVC" textLabel="srd-3x-ovp" rowHeight="50" style="IBUITableViewCellStyleDefault" id="Inl-wL-xJ2">
                                 <rect key="frame" x="0.0" y="92" width="600" height="50"/>
@@ -212,6 +217,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="J6Z-Vj-suu"/>
+                    <connections>
+                        <outlet property="loadingWheel" destination="G21-tq-4pu" id="XNx-qO-EBy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JPZ-ml-1O1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

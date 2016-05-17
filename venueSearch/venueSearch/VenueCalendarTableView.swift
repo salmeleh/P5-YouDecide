@@ -14,15 +14,41 @@ class VenueCalendarTableView: UITableViewController {
     var selectedVenue: Venue!
     var events: [Event] = [Event]()
     
+    @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadingWheel.startAnimating()
+        loadingWheel.hidden = false
+
         self.navigationController!.navigationBar.tintColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
         
+        events = fetchAllEvents()
         SongKickClient.sharedInstance().getVenueCalendar(selectedVenue.id, completionHandler: handlerForGetVenueCalendar)
         
+
     }
 
+    
+    //MARK: shared instance
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }
+    
+    //MARK: fetchAll
+    func fetchAllEvents() -> [Event] {
+        let fetchRequest = NSFetchRequest(entityName: "Event")
+        do {
+            return try sharedContext.executeFetchRequest(fetchRequest) as! [Event]
+        } catch let error as NSError {
+            print("Error in fetchAllVenues(): \(error)")
+            return [Event]()
+        }
+    }
+    
+    
     
     // MARK: UITableViewController Methods
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -43,7 +69,7 @@ class VenueCalendarTableView: UITableViewController {
     
     
     
-    
+    //MARK: completionHandler for getVenueCalendar
     func handlerForGetVenueCalendar(result: [Event]?, error: String?) -> Void {
         if error == nil {
             print("getVenueCalendar returned no error. # of events: \((result?.count)!)")
@@ -53,17 +79,16 @@ class VenueCalendarTableView: UITableViewController {
                 e.venue = selectedVenue
             }
             
-            
             dispatch_async(dispatch_get_main_queue(), {
                 CoreDataStackManager.sharedInstance().saveContext()
             })
             
             tableView.reloadData()
-            
+            loadingWheel.stopAnimating()
         }
         else {
             dispatch_async(dispatch_get_main_queue(), {
-                //self.loadingWheel.stopAnimating()
+                self.loadingWheel.stopAnimating()
                 self.launchAlertController(error!)
             })
         }
@@ -74,12 +99,11 @@ class VenueCalendarTableView: UITableViewController {
     
     
     //MARK: launchAlertController
-    /* shows alert view with error */
     func launchAlertController(error: String) {
         let alertController = UIAlertController(title: "", message: error, preferredStyle: .Alert)
         
         let OKAction = UIAlertAction(title: "Dismiss", style: .Default) { (action) in
-            //self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
         alertController.addAction(OKAction)
         
