@@ -15,12 +15,12 @@ class Event : NSManagedObject {
     
     //MARK: Properties
     @NSManaged var displayName: String
-    @NSManaged var start: [String : AnyObject]
+    //@NSManaged var start: [String : AnyObject]
     @NSManaged var popularity: Double
-    @NSManaged var location: [String: AnyObject]
+    //@NSManaged var location: [String: AnyObject]
     @NSManaged var id: Int
-    @NSManaged var performance: [[String : AnyObject]]
-    @NSManaged var venue: Venue?
+    //@NSManaged var performance: [[String : AnyObject]]
+    @NSManaged var venue: Venue
     
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
@@ -37,12 +37,12 @@ class Event : NSManagedObject {
         
         //Dictionary
         displayName = dictionary[SongKickClient.JSONResponseKeys.DisplayName] as! String
-        start = dictionary[SongKickClient.JSONResponseKeys.Start] as! [String : AnyObject]
+        //start = dictionary[SongKickClient.JSONResponseKeys.Start] as! [String : AnyObject]
         popularity = dictionary[SongKickClient.JSONResponseKeys.Popularity] as! Double
-        location = dictionary[SongKickClient.JSONResponseKeys.Location] as! [String: AnyObject]
+        //location = dictionary[SongKickClient.JSONResponseKeys.Location] as! [String: AnyObject]
         id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
-        performance = dictionary[SongKickClient.JSONResponseKeys.Performance] as! [[String : AnyObject]]
-        venue = dictionary[SongKickClient.JSONResponseKeys.Venue] as? Venue
+        //performance = dictionary[SongKickClient.JSONResponseKeys.Performance] as! [[String : AnyObject]]
+        //venue = dictionary[SongKickClient.JSONResponseKeys.Venue] as! Venue
     }
     
 

@@ -19,6 +19,8 @@ class Venue : NSManagedObject {
     @NSManaged var lat: NSNumber?
     @NSManaged var lng: NSNumber?
     @NSManaged var street: String
+    @NSManaged var events: [Event]
+    
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)

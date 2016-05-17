@@ -189,7 +189,9 @@ class SearchView: UIViewController, UITextFieldDelegate {
         if error == nil {
             print("getVenues returned no error. # of venues: \((result?.count)!)")
             self.venues = result!
-            CoreDataStackManager.sharedInstance().saveContext()
+            dispatch_async(dispatch_get_main_queue(), {
+                CoreDataStackManager.sharedInstance().saveContext()
+            })
             getMetroAreaEventsComplete()
         }
         else {

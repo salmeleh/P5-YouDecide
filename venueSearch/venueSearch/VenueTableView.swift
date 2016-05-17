@@ -50,49 +50,17 @@ class VenueTableView: UITableViewController {
 
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //start loading animation
-        loadingWheel.hidden = false
-        loadingWheel.startAnimating()
-        
         //pull up calendar of events for venue
-        let venueID = venues[indexPath.row].id
-        SongKickClient.sharedInstance().getVenueCalendar(venueID, completionHandler: handlerForGetVenueCalendar)
+        let selectedVenue = venues[indexPath.row]
+        self.performSegueWithIdentifier("showVenueCalendarTVC", sender: selectedVenue)
 
-    }
-    
-
-    func handlerForGetVenueCalendar(result: [Event]?, error: String?) -> Void {
-        if error == nil {
-            print("getVenueCalendar returned no error. # of events: \((result?.count)!)")
-            self.events = result!
-            ///////CRASHED HERE///////
-            CoreDataStackManager.sharedInstance().saveContext()
-            getVenueCalendarCompleted()
-        }
-        else {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.loadingWheel.stopAnimating()
-                self.launchAlertController(error!)
-            })
-        }
-    }
-    
-    func getVenueCalendarCompleted() {
-        dispatch_async(dispatch_get_main_queue(), {
-            //stop loading animation
-            self.loadingWheel.stopAnimating()
-            
-            //show venueTableView
-            self.performSegueWithIdentifier("showVenueCalendarTVC", sender: nil)
-        })
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showVenueCalendarTVC") {
             let viewController = segue.destinationViewController as! VenueCalendarTableView
-            viewController.events = events
-            viewController.venues = venues
+            viewController.selectedVenue = sender as! Venue
         }
     }
     
