@@ -51,14 +51,16 @@ class SearchView: UIViewController, UITextFieldDelegate {
 //        zipLon = -87.6553
     }
 
+    
+    ///KEYBOARD RECOGNIZERS NOT NEEDED -- ONLY TEXTBOX IS HIGH ENOUGH////
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         /* Add tap recognizer to dismiss keyboard */
         self.addKeyboardDismissRecognizer()
         
-        /* Subscribe to keyboard events so we can adjust the view to show hidden controls */
-        self.subscribeToKeyboardNotifications()
+//        /* Subscribe to keyboard events so we can adjust the view to show hidden controls */
+//        self.subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -67,8 +69,8 @@ class SearchView: UIViewController, UITextFieldDelegate {
         /* Remove tap recognizer */
         self.removeKeyboardDismissRecognizer()
         
-        /* Unsubscribe to all keyboard events */
-        self.unsubscribeToKeyboardNotifications()
+//        /* Unsubscribe to all keyboard events */
+//        self.unsubscribeToKeyboardNotifications()
     }
 
     
@@ -92,21 +94,25 @@ class SearchView: UIViewController, UITextFieldDelegate {
     
 
     //MARK: textField delegate methods
-//    //via http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield
-//    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-//        
-//        if(textField.text?.characters.count < 5) {return true}
-//        else {
-//            //calculate lat lng
-//            forwardGeocoding(zipTextField.text!)
-//            return false
-//        }
-//        
-//    }
     func textFieldDidBeginEditing(textField: UITextField) {
         venues.removeAll()
         events.removeAll()
         userLocality = ""
+        
+        CoreDataStackManager.sharedInstance().saveContext()
+    }
+    
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        if textField.text?.characters.count == 5 {
+            return true
+        }
+        else {return false}
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField.text?.characters.count == 5 {
+            forwardGeocoding(zipTextField.text!)
+        }
     }
     
     
@@ -122,9 +128,10 @@ class SearchView: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+    
     //MARK: searchButtonPressed
     @IBAction func searchButtonPressed(sender: AnyObject) {
-        
         if zipTextField.text?.characters.count !== 5 {
             launchAlertController("invalid zip code")
             return

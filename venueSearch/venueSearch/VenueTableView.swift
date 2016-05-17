@@ -34,10 +34,10 @@ class VenueTableView: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellReuseIdentifier = "venueTVC"
         let venue = venues[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! VenuteTableViewCell
         
-        cell.textLabel!.text = venue.displayName
-        cell.detailTextLabel!.text = venue.street
+        cell.titleLabel.text = venue.displayName
+        cell.detailLabel.text = venue.street
 
         
         return cell
