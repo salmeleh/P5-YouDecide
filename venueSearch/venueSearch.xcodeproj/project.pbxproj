@@ -162,8 +162,8 @@
 			children = (
 				20B802E91CDA42E900268C12 /* SearchViewController.swift */,
 				20B803161CDA46BA00268C12 /* VenueTableView.swift */,
-				205E239B1CE26C37005FB1C8 /* VenueCalendarTableView.swift */,
 				202DB5231CE36D54004D9A06 /* VenueTableViewCell.swift */,
+				205E239B1CE26C37005FB1C8 /* VenueCalendarTableView.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
