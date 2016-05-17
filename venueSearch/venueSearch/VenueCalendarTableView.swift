@@ -20,15 +20,19 @@ class VenueCalendarTableView: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadingWheel.startAnimating()
         loadingWheel.hidden = false
+        loadingWheel.startAnimating()
 
         self.navigationController!.navigationBar.tintColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
         
-        events = fetchAllEvents()
-        SongKickClient.sharedInstance().getVenueCalendar(selectedVenue.id, completionHandler: handlerForGetVenueCalendar)
+        if selectedVenue.events.count == 0 {
+            SongKickClient.sharedInstance().getVenueCalendar(selectedVenue.id, completionHandler: handlerForGetVenueCalendar)
+        }
+        else {
+            events = fetchAllEvents()
+        }
         
-
+        
     }
 
     
@@ -81,9 +85,9 @@ class VenueCalendarTableView: UITableViewController {
             
             dispatch_async(dispatch_get_main_queue(), {
                 CoreDataStackManager.sharedInstance().saveContext()
+                self.tableView.reloadData()
             })
             
-            tableView.reloadData()
             loadingWheel.stopAnimating()
         }
         else {
@@ -91,6 +95,7 @@ class VenueCalendarTableView: UITableViewController {
                 self.loadingWheel.stopAnimating()
                 self.launchAlertController(error!)
             })
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 

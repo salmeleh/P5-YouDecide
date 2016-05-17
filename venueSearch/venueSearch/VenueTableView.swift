@@ -14,6 +14,7 @@ class VenueTableView: UITableViewController {
 //    var events: [Event] = [Event]()
     var venues: [Venue] = [Venue]()
     var userLocality: String?
+    var newLocation: Bool = false
     
     
     @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
@@ -22,13 +23,16 @@ class VenueTableView: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        loadingWheel.startAnimating()
         loadingWheel.hidden = false
+        loadingWheel.startAnimating()
         self.navigationController!.navigationBar.tintColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
-
-        venues = fetchAllVenues()
         
-        SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
+        if newLocation {
+            SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
+        }
+        else {
+            venues = fetchAllVenues()
+        }
         
         
     }
@@ -90,9 +94,9 @@ class VenueTableView: UITableViewController {
             
             dispatch_async(dispatch_get_main_queue(), {
                 CoreDataStackManager.sharedInstance().saveContext()
+                self.tableView.reloadData()
             })
             
-            tableView.reloadData()
             loadingWheel.stopAnimating()
 
         }

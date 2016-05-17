@@ -27,6 +27,8 @@ class SearchView: UIViewController, UITextFieldDelegate {
     var userLocality: String? = ""
     var userSubLocality: String? = ""
 
+    var newLocation: Bool = true
+
 
     
     //MARK: view...
@@ -76,13 +78,12 @@ class SearchView: UIViewController, UITextFieldDelegate {
 
     //MARK: textField delegate methods
     func textFieldDidBeginEditing(textField: UITextField) {
-        userLocality = ""
+        newLocation = true
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField.text?.characters.count == 5 {
-            searchButtonPressed(UIButton)
-        }
+        //textField.text?.characters.count == 5
+        searchButtonPressed(UIButton)
         return true
     }
     
@@ -91,6 +92,8 @@ class SearchView: UIViewController, UITextFieldDelegate {
     
     //MARK: searchButtonPressed
     @IBAction func searchButtonPressed(sender: AnyObject) {
+        forwardGeocoding(zipTextField.text!)
+        
         if zipTextField.text?.characters.count !== 5 {
             launchAlertController("invalid zip code")
             return
@@ -112,6 +115,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         if (segue.identifier == "ShowVenueTableVC") {
             let viewController = segue.destinationViewController as! VenueTableView
             viewController.userLocality = sender as! String
+            viewController.newLocation = self.newLocation
         }
     }
     
