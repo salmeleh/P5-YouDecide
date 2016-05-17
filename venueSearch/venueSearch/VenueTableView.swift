@@ -14,7 +14,7 @@ class VenueTableView: UITableViewController {
 //    var events: [Event] = [Event]()
     var venues: [Venue] = [Venue]()
     var userLocality: String?
-    var newLocation: Bool = false
+    var isNewLocation: Bool = false
     
     
     @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
@@ -27,7 +27,7 @@ class VenueTableView: UITableViewController {
         loadingWheel.startAnimating()
         self.navigationController!.navigationBar.tintColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
         
-        if newLocation {
+        if isNewLocation {
             SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
         }
         else {

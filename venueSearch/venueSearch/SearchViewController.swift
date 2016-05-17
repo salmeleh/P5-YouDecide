@@ -27,7 +27,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
     var userLocality: String? = ""
     var userSubLocality: String? = ""
 
-    var newLocation: Bool = true
+    var isNewLocation: Bool = true
 
 
     
@@ -78,7 +78,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
 
     //MARK: textField delegate methods
     func textFieldDidBeginEditing(textField: UITextField) {
-        newLocation = true
+        isNewLocation = true
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -115,7 +115,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         if (segue.identifier == "ShowVenueTableVC") {
             let viewController = segue.destinationViewController as! VenueTableView
             viewController.userLocality = sender as! String
-            viewController.newLocation = self.newLocation
+            viewController.isNewLocation = self.isNewLocation
         }
     }
     
