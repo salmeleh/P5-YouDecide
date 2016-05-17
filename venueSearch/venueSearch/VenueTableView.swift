@@ -11,8 +11,10 @@ import CoreData
 
 class VenueTableView: UITableViewController {
     
-    var events: [Event] = [Event]()
+//    var events: [Event] = [Event]()
     var venues: [Venue] = [Venue]()
+    var userLocality: String?
+    var isNewLocation: Bool = false
     
     
     @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
@@ -20,24 +22,50 @@ class VenueTableView: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     
-        loadingWheel.hidesWhenStopped = true
-        loadingWheel.hidden = true
-        
+        loadingWheel.hidden = false
+        loadingWheel.startAnimating()
         self.navigationController!.navigationBar.tintColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
-
+        
+        if isNewLocation {
+            SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
+        }
+        else {
+            venues = fetchAllVenues()
+        }
+        
+        
     }
+    
+    
+    //MARK: shared instance
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }
+    
+    //MARK: fetch all
+    func fetchAllVenues() -> [Venue] {
+        let fetchRequest = NSFetchRequest(entityName: "Venue")
+        do {
+            return try sharedContext.executeFetchRequest(fetchRequest) as! [Venue]
+        } catch let error as NSError {
+            print("Error in fetchAllVenues(): \(error)")
+            return [Venue]()
+        }
+    }
+    
+    
+    
     
     
     // MARK: UITableViewController Methods
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellReuseIdentifier = "venueTVC"
         let venue = venues[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! VenuteTableViewCell
         
-        cell.textLabel!.text = venue.displayName
-        cell.detailTextLabel!.text = venue.street
+        cell.titleLabel.text = venue.displayName
+        cell.detailLabel.text = venue.street
 
         
         return cell
@@ -50,22 +78,27 @@ class VenueTableView: UITableViewController {
 
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //start loading animation
-        loadingWheel.hidden = false
-        loadingWheel.startAnimating()
-        
         //pull up calendar of events for venue
-        let venueID = venues[indexPath.row].id
-        SongKickClient.sharedInstance().getVenueCalendar(venueID, completionHandler: handlerForGetVenueCalendar)
+        let selectedVenue = venues[indexPath.row]
+        self.performSegueWithIdentifier("showVenueCalendarTVC", sender: selectedVenue)
 
     }
     
-
-    func handlerForGetVenueCalendar(result: [Event]?, error: String?) -> Void {
+    
+    
+    //MARK: completionHandler for getVenues
+    func handlerForGetVenues(result: [Venue]?, error: String?) -> Void {
         if error == nil {
-            print("getVenueCalendar returned no error. # of events: \((result?.count)!)")
-            self.events = result!
-            getVenueCalendarCompleted()
+            print("getVenues returned no error. # of venues: \((result?.count)!)")
+            self.venues = result!
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                CoreDataStackManager.sharedInstance().saveContext()
+                self.tableView.reloadData()
+            })
+            
+            loadingWheel.stopAnimating()
+
         }
         else {
             dispatch_async(dispatch_get_main_queue(), {
@@ -75,36 +108,25 @@ class VenueTableView: UITableViewController {
         }
     }
     
-    func getVenueCalendarCompleted() {
-        dispatch_async(dispatch_get_main_queue(), {
-            //stop loading animation
-            self.loadingWheel.stopAnimating()
-            
-            //show venueTableView
-            self.performSegueWithIdentifier("showVenueCalendarTVC", sender: nil)
-        })
-    }
     
     
+    //MARK: prepareForSegue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showVenueCalendarTVC") {
             let viewController = segue.destinationViewController as! VenueCalendarTableView
-            viewController.events = events
-            viewController.venues = venues
+            viewController.selectedVenue = sender as! Venue
         }
     }
     
     
     
     
-    
     //MARK: launchAlertController
-    /* shows alert view with error */
     func launchAlertController(error: String) {
         let alertController = UIAlertController(title: "", message: error, preferredStyle: .Alert)
         
         let OKAction = UIAlertAction(title: "Dismiss", style: .Default) { (action) in
-            //self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
         alertController.addAction(OKAction)
         
