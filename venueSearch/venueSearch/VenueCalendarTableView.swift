@@ -98,7 +98,10 @@ class VenueCalendarTableView: UITableViewController, NSFetchedResultsControllerD
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //launch to safari
+        let event = events[indexPath.row]
+        let url = event.uri
         
+        UIApplication.sharedApplication().openURL(NSURL(string: url)!)
     }
     
     
