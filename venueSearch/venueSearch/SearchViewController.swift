@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 import CoreData
-//import PromiseKit
+import PromiseKit
 
 class SearchView: UIViewController, UITextFieldDelegate {
 
@@ -29,7 +29,6 @@ class SearchView: UIViewController, UITextFieldDelegate {
     var userSubLocality: String? = ""
 
     var isNewLocation: Bool = true
-
 
     
     //MARK: view...
