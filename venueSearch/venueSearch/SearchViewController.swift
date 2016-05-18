@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import CoreData
+import PromiseKit
 
 class SearchView: UIViewController, UITextFieldDelegate {
 
@@ -28,7 +29,6 @@ class SearchView: UIViewController, UITextFieldDelegate {
     var userSubLocality: String? = ""
 
     var isNewLocation: Bool = true
-
 
     
     //MARK: view...
@@ -100,8 +100,13 @@ class SearchView: UIViewController, UITextFieldDelegate {
         
         forwardGeocoding(zipTextField.text!)
         
-        performSegueWithIdentifier("ShowVenueTableVC", sender: userLocality)
+        if userLocality == "" {
+            launchAlertController("press search again")
+            return
+        }
         
+        performSegueWithIdentifier("ShowVenueTableVC", sender: userLocality)
+
         
     }
     
@@ -123,10 +128,10 @@ class SearchView: UIViewController, UITextFieldDelegate {
     //MARK: forwardGeocoding
     //via http://mhorga.org/2015/08/14/geocoding-in-ios.html
     func forwardGeocoding(address: String) {
+        
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
                 self.launchAlertController(String(error))
-                return
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
@@ -140,6 +145,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
                 self.zipLon = coordinate!.longitude
                 
             }
+
         })
     }
     

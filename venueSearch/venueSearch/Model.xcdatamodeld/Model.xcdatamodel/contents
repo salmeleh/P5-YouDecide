@@ -4,6 +4,7 @@
         <attribute name="displayName" attributeType="String" syncable="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="popularity" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="uri" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="venue" maxCount="1" deletionRule="Nullify" destinationEntity="Venue" inverseName="events" inverseEntity="Venue" syncable="YES"/>
     </entity>
     <entity name="Venue" representedClassName="Venue" syncable="YES">
@@ -15,7 +16,7 @@
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Event" inverseName="venue" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Event" positionX="-54" positionY="-9" width="128" height="120"/>
         <element name="Venue" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

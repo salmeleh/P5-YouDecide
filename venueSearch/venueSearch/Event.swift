@@ -20,6 +20,7 @@ class Event : NSManagedObject {
     //@NSManaged var location: [String: AnyObject]
     @NSManaged var id: Int
     //@NSManaged var performance: [[String : AnyObject]]
+    @NSManaged var uri: String
     @NSManaged var venue: Venue
     
     
@@ -43,6 +44,7 @@ class Event : NSManagedObject {
         id = dictionary[SongKickClient.JSONResponseKeys.ID] as! Int
         //performance = dictionary[SongKickClient.JSONResponseKeys.Performance] as! [[String : AnyObject]]
         //venue = dictionary[SongKickClient.JSONResponseKeys.Venue] as! Venue
+        uri = dictionary[SongKickClient.JSONResponseKeys.URI] as! String
     }
     
 

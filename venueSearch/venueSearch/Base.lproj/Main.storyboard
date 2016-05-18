@@ -108,38 +108,43 @@
         <scene sceneID="j4F-EX-XNe">
             <objects>
                 <tableViewController storyboardIdentifier="VenueTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LOi-h7-uqd" customClass="VenueTableView" customModule="venueSearch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="kPq-25-yzN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="kPq-25-yzN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="mp0-ua-svg">
-                            <rect key="frame" x="0.0" y="142" width="600" height="37"/>
+                            <rect key="frame" x="0.0" y="147" width="600" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="color" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                         </activityIndicatorView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="venueTVC" rowHeight="50" id="D26-8J-JnA" customClass="VenuteTableViewCell" customModule="venueSearch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="venueTVC" rowHeight="55" id="D26-8J-JnA" customClass="VenuteTableViewCell" customModule="venueSearch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D26-8J-JnA" id="drb-p6-JeQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-pP-CDC">
-                                            <rect key="frame" x="8" y="8" width="300" height="33"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BhH-pP-CDC">
+                                            <rect key="frame" x="8" y="8" width="388" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="300" id="67i-Lk-rR4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="16"/>
                                             <color key="textColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="67i-Lk-rR4"/>
+                                                </mask>
+                                            </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="2Wf-rF-NyK">
-                                            <rect key="frame" x="359" y="8" width="200" height="33"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Wf-rF-NyK">
+                                            <rect key="frame" x="404" y="8" width="155" height="38"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="200" id="eZe-a6-hMO"/>
+                                                <constraint firstAttribute="width" constant="155" id="eZe-a6-hMO"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="12"/>
                                             <color key="textColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -148,12 +153,23 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="BhH-pP-CDC" firstAttribute="leading" secondItem="drb-p6-JeQ" secondAttribute="leadingMargin" id="1bD-2Z-dii"/>
+                                        <constraint firstItem="BhH-pP-CDC" firstAttribute="centerY" secondItem="drb-p6-JeQ" secondAttribute="centerY" id="7ZG-zp-DX2"/>
                                         <constraint firstItem="2Wf-rF-NyK" firstAttribute="trailing" secondItem="drb-p6-JeQ" secondAttribute="trailingMargin" id="YEY-5T-N6V"/>
+                                        <constraint firstItem="2Wf-rF-NyK" firstAttribute="centerY" secondItem="drb-p6-JeQ" secondAttribute="centerY" id="efn-EZ-TM7"/>
                                         <constraint firstItem="BhH-pP-CDC" firstAttribute="top" secondItem="2Wf-rF-NyK" secondAttribute="top" id="h9o-wQ-5bo"/>
+                                        <constraint firstItem="2Wf-rF-NyK" firstAttribute="leading" secondItem="BhH-pP-CDC" secondAttribute="trailing" constant="8" id="kyF-AA-2DZ"/>
                                         <constraint firstItem="BhH-pP-CDC" firstAttribute="baseline" secondItem="2Wf-rF-NyK" secondAttribute="baseline" constant="-2" id="n5i-iM-Ejq"/>
                                         <constraint firstItem="BhH-pP-CDC" firstAttribute="top" secondItem="drb-p6-JeQ" secondAttribute="topMargin" id="pcm-Bd-xIx"/>
                                         <constraint firstItem="BhH-pP-CDC" firstAttribute="bottom" secondItem="drb-p6-JeQ" secondAttribute="bottomMargin" id="qAc-KY-JLU"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="h9o-wQ-5bo"/>
+                                            <exclude reference="n5i-iM-Ejq"/>
+                                            <exclude reference="pcm-Bd-xIx"/>
+                                            <exclude reference="qAc-KY-JLU"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="detailLabel" destination="2Wf-rF-NyK" id="NV0-kT-aiL"/>
@@ -181,34 +197,49 @@
         <scene sceneID="kTU-Nd-CPJ">
             <objects>
                 <tableViewController storyboardIdentifier="VenueCalendarTableVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j6o-cH-FbV" customClass="VenueCalendarTableView" customModule="venueSearch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="W7h-0j-oKX">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" sectionHeaderHeight="28" sectionFooterHeight="28" id="W7h-0j-oKX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="G21-tq-4pu">
-                            <rect key="frame" x="0.0" y="142" width="600" height="37"/>
+                            <rect key="frame" x="0.0" y="148" width="600" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="color" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                         </activityIndicatorView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="venueCalendarTVC" textLabel="srd-3x-ovp" rowHeight="50" style="IBUITableViewCellStyleDefault" id="Inl-wL-xJ2">
-                                <rect key="frame" x="0.0" y="92" width="600" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="venueCalendarTVC" rowHeight="56" id="Inl-wL-xJ2" customClass="VenueCalendarTableViewCell" customModule="venueSearch">
+                                <rect key="frame" x="0.0" y="92" width="600" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Inl-wL-xJ2" id="uqE-kG-0Pp">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="srd-3x-ovp">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="49"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-qA-scB">
+                                            <rect key="frame" x="8" y="8" width="584" height="39"/>
+                                            <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="16"/>
+                                            <color key="textColor" red="0.97254901959999995" green="0.0" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6FU-qA-scB" firstAttribute="trailing" secondItem="uqE-kG-0Pp" secondAttribute="trailingMargin" id="XlQ-86-JBe"/>
+                                        <constraint firstItem="6FU-qA-scB" firstAttribute="leading" secondItem="uqE-kG-0Pp" secondAttribute="leadingMargin" id="f1i-s2-qqu"/>
+                                        <constraint firstItem="6FU-qA-scB" firstAttribute="bottom" secondItem="uqE-kG-0Pp" secondAttribute="bottomMargin" id="j9t-gJ-Oeh"/>
+                                        <constraint firstItem="6FU-qA-scB" firstAttribute="centerY" secondItem="uqE-kG-0Pp" secondAttribute="centerY" id="sRL-bm-QTW"/>
+                                        <constraint firstItem="6FU-qA-scB" firstAttribute="top" secondItem="uqE-kG-0Pp" secondAttribute="topMargin" id="sfr-uK-HPN"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="j9t-gJ-Oeh"/>
+                                            <exclude reference="sfr-uK-HPN"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="titleLabel" destination="6FU-qA-scB" id="CwK-El-yBz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -244,7 +244,7 @@ class SongKickClient: NSObject {
             
             }
             else {
-                completionHandler(result: nil, error: "No venues in that metro area =[")
+                completionHandler(result: nil, error: "No venues in that metro area =(")
                 return
             }
         }
@@ -313,7 +313,7 @@ class SongKickClient: NSObject {
                 
             }
             else {
-                completionHandler(result: nil, error: "No upcoming events at that venue =[")
+                completionHandler(result: nil, error: "No upcoming events at that venue =(")
                 return
             }
             

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class VenueCalendarTableView: UITableViewController {
+class VenueCalendarTableView: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var selectedVenue: Venue!
     var events: [Event] = [Event]()
@@ -25,16 +25,42 @@ class VenueCalendarTableView: UITableViewController {
 
         self.navigationController!.navigationBar.tintColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
         
-        if selectedVenue.events.count == 0 {
-            SongKickClient.sharedInstance().getVenueCalendar(selectedVenue.id, completionHandler: handlerForGetVenueCalendar)
-        }
-        else {
-            events = fetchAllEvents()
-        }
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {}
         
-        
+        fetchedResultsController.delegate = self
     }
 
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if events.isEmpty {
+            SongKickClient.sharedInstance().getVenueCalendar(selectedVenue.id, completionHandler: handlerForGetVenueCalendar)
+        }
+    }
+    
+    
+    
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        
+        let fetchRequest = NSFetchRequest(entityName: "Event")
+        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "displayName", ascending: true)]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                  managedObjectContext: self.sharedContext,
+                                                                  sectionNameKeyPath: nil,
+                                                                  cacheName: nil)
+        
+        return fetchedResultsController
+        
+    }()
+    
+    
+    
+    
     
     //MARK: shared instance
     var sharedContext: NSManagedObjectContext {
@@ -58,9 +84,9 @@ class VenueCalendarTableView: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellReuseIdentifier = "venueCalendarTVC"
         let event = events[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier) as! VenueCalendarTableViewCell
         
-        cell.textLabel!.text = event.displayName        
+        cell.titleLabel!.text = event.displayName
         
         return cell
     }
@@ -70,7 +96,13 @@ class VenueCalendarTableView: UITableViewController {
         return events.count
     }
     
-    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //launch to safari
+        let event = events[indexPath.row]
+        let url = event.uri
+        
+        UIApplication.sharedApplication().openURL(NSURL(string: url)!)
+    }
     
     
     //MARK: completionHandler for getVenueCalendar
@@ -95,7 +127,8 @@ class VenueCalendarTableView: UITableViewController {
                 self.loadingWheel.stopAnimating()
                 self.launchAlertController(error!)
             })
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(false, completion: nil)
+
         }
     }
 
