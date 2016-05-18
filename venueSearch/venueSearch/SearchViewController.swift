@@ -105,9 +105,8 @@ class SearchView: UIViewController, UITextFieldDelegate {
             return
         }
         
-        
         performSegueWithIdentifier("ShowVenueTableVC", sender: userLocality)
-        
+
         
     }
     
