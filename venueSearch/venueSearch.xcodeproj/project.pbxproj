@@ -13,6 +13,7 @@
 		202BCBAB1CDA72CE004025BB /* SongKickClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BCBAA1CDA72CE004025BB /* SongKickClient.swift */; };
 		202BCBAE1CDA7310004025BB /* SongKickConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BCBAD1CDA7310004025BB /* SongKickConstants.swift */; };
 		202DB5241CE36D54004D9A06 /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202DB5231CE36D54004D9A06 /* VenueTableViewCell.swift */; };
+		204EE6CE1CECBF44003F3714 /* VenueCalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204EE6CD1CECBF44003F3714 /* VenueCalendarTableViewCell.swift */; };
 		205E239C1CE26C37005FB1C8 /* VenueCalendarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205E239B1CE26C37005FB1C8 /* VenueCalendarTableView.swift */; };
 		20B802E81CDA42E900268C12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802E71CDA42E900268C12 /* AppDelegate.swift */; };
 		20B802EA1CDA42E900268C12 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B802E91CDA42E900268C12 /* SearchViewController.swift */; };
@@ -127,6 +128,7 @@
 		202BCBAD1CDA7310004025BB /* SongKickConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongKickConstants.swift; sourceTree = "<group>"; };
 		202DB5231CE36D54004D9A06 /* VenueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
 		204EE6A91CECBADD003F3714 /* PromiseKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PromiseKit.xcodeproj; path = "../../../../../../../../../Downloads/PromiseKit-master/PromiseKit.xcodeproj"; sourceTree = "<group>"; };
+		204EE6CD1CECBF44003F3714 /* VenueCalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		205E239B1CE26C37005FB1C8 /* VenueCalendarTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCalendarTableView.swift; sourceTree = "<group>"; };
 		20B802E41CDA42E900268C12 /* venueSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = venueSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B802E71CDA42E900268C12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				20B803161CDA46BA00268C12 /* VenueTableView.swift */,
 				202DB5231CE36D54004D9A06 /* VenueTableViewCell.swift */,
 				205E239B1CE26C37005FB1C8 /* VenueCalendarTableView.swift */,
+				204EE6CD1CECBF44003F3714 /* VenueCalendarTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				20BAEC2F1CDBC5BF009AE60E /* Event.swift in Sources */,
 				205E239C1CE26C37005FB1C8 /* VenueCalendarTableView.swift in Sources */,
 				20041ECD1CEA4BB900ABBC32 /* Model.xcdatamodeld in Sources */,
+				204EE6CE1CECBF44003F3714 /* VenueCalendarTableViewCell.swift in Sources */,
 				202BCBAB1CDA72CE004025BB /* SongKickClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

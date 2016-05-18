@@ -9,13 +9,11 @@
 import UIKit
 import CoreData
 
-class VenueTableView: UITableViewController {
+class VenueTableView: UITableViewController, NSFetchedResultsControllerDelegate {
     
-//    var events: [Event] = [Event]()
     var venues: [Venue] = [Venue]()
     var userLocality: String?
     var isNewLocation: Bool = false
-    
     
     @IBOutlet weak var loadingWheel: UIActivityIndicatorView!
     
@@ -25,17 +23,43 @@ class VenueTableView: UITableViewController {
     
         loadingWheel.hidden = false
         loadingWheel.startAnimating()
+        
         self.navigationController!.navigationBar.tintColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
         
-        if isNewLocation {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {}
+        
+        fetchedResultsController.delegate = self
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if venues.isEmpty {
             SongKickClient.sharedInstance().getVenues(userLocality!, completionHandler: handlerForGetVenues)
         }
-        else {
-            venues = fetchAllVenues()
-        }
-        
         
     }
+    
+    
+    
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        
+        let fetchRequest = NSFetchRequest(entityName: "Venue")
+        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "displayName", ascending: true)]
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                  managedObjectContext: self.sharedContext,
+                                                                  sectionNameKeyPath: nil,
+                                                                  cacheName: nil)
+        
+        return fetchedResultsController
+        
+    }()
+    
     
     
     //MARK: shared instance
@@ -43,16 +67,16 @@ class VenueTableView: UITableViewController {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
-    //MARK: fetch all
-    func fetchAllVenues() -> [Venue] {
-        let fetchRequest = NSFetchRequest(entityName: "Venue")
-        do {
-            return try sharedContext.executeFetchRequest(fetchRequest) as! [Venue]
-        } catch let error as NSError {
-            print("Error in fetchAllVenues(): \(error)")
-            return [Venue]()
-        }
-    }
+//    //MARK: fetch all
+//    func fetchAllVenues() -> [Venue] {
+//        let fetchRequest = NSFetchRequest(entityName: "Venue")
+//        do {
+//            return try sharedContext.executeFetchRequest(fetchRequest) as! [Venue]
+//        } catch let error as NSError {
+//            print("Error in fetchAllVenues(): \(error)")
+//            return [Venue]()
+//        }
+//    }
     
     
     

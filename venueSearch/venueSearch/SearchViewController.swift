@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 import CoreData
-import PromiseKit
+//import PromiseKit
 
 class SearchView: UIViewController, UITextFieldDelegate {
 
@@ -100,6 +100,12 @@ class SearchView: UIViewController, UITextFieldDelegate {
         }
         
         forwardGeocoding(zipTextField.text!)
+        
+        if userLocality == "" {
+            launchAlertController("press search again")
+            return
+        }
+        
         
         performSegueWithIdentifier("ShowVenueTableVC", sender: userLocality)
         
