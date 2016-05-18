@@ -127,6 +127,7 @@ class VenueTableView: UITableViewController, NSFetchedResultsControllerDelegate 
         else {
             dispatch_async(dispatch_get_main_queue(), {
                 self.loadingWheel.stopAnimating()
+                CoreDataStackManager.sharedInstance().saveContext()
                 self.launchAlertController(error!)
             })
         }

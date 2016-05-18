@@ -67,16 +67,17 @@ class VenueCalendarTableView: UITableViewController, NSFetchedResultsControllerD
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
     
-    //MARK: fetchAll
-    func fetchAllEvents() -> [Event] {
-        let fetchRequest = NSFetchRequest(entityName: "Event")
-        do {
-            return try sharedContext.executeFetchRequest(fetchRequest) as! [Event]
-        } catch let error as NSError {
-            print("Error in fetchAllVenues(): \(error)")
-            return [Event]()
-        }
-    }
+    
+//    //MARK: fetchAll
+//    func fetchAllEvents() -> [Event] {
+//        let fetchRequest = NSFetchRequest(entityName: "Event")
+//        do {
+//            return try sharedContext.executeFetchRequest(fetchRequest) as! [Event]
+//        } catch let error as NSError {
+//            print("Error in fetchAllVenues(): \(error)")
+//            return [Event]()
+//        }
+//    }
     
     
     
@@ -105,6 +106,7 @@ class VenueCalendarTableView: UITableViewController, NSFetchedResultsControllerD
     }
     
     
+    
     //MARK: completionHandler for getVenueCalendar
     func handlerForGetVenueCalendar(result: [Event]?, error: String?) -> Void {
         if error == nil {
@@ -125,6 +127,7 @@ class VenueCalendarTableView: UITableViewController, NSFetchedResultsControllerD
         else {
             dispatch_async(dispatch_get_main_queue(), {
                 self.loadingWheel.stopAnimating()
+                CoreDataStackManager.sharedInstance().saveContext()
                 self.launchAlertController(error!)
             })
             self.dismissViewControllerAnimated(false, completion: nil)
