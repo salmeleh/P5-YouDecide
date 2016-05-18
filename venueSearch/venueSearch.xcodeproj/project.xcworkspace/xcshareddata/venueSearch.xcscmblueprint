@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6ACC4240C54F74A26E977BE7D7B0EFA7A99B0D49",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F5B4EC300E7199406BA2B2AA6070092FA65DDD89" : 0,
+    "6ACC4240C54F74A26E977BE7D7B0EFA7A99B0D49" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "20759035-D26B-45C5-B9CC-AFE85922E9D5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F5B4EC300E7199406BA2B2AA6070092FA65DDD89" : "PromiseKit\/",
+    "6ACC4240C54F74A26E977BE7D7B0EFA7A99B0D49" : "P5-YouDecide\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "venueSearch",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "venueSearch\/venueSearch.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/salmeleh\/P5-YouDecide.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6ACC4240C54F74A26E977BE7D7B0EFA7A99B0D49"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/salmeleh\/PromiseKit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F5B4EC300E7199406BA2B2AA6070092FA65DDD89"
+    }
+  ]
+}

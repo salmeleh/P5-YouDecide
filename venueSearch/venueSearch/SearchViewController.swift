@@ -92,22 +92,18 @@ class SearchView: UIViewController, UITextFieldDelegate {
     
     //MARK: searchButtonPressed
     @IBAction func searchButtonPressed(sender: AnyObject) {
-        forwardGeocoding(zipTextField.text!)
         
         if zipTextField.text?.characters.count !== 5 {
             launchAlertController("invalid zip code")
             return
         }
         
-        if userLocality == "" {
-            print("hit search agian")
-            return
-        }
+        forwardGeocoding(zipTextField.text!)
         
         performSegueWithIdentifier("ShowVenueTableVC", sender: userLocality)
         
+        
     }
-    
     
     
     
@@ -134,18 +130,21 @@ class SearchView: UIViewController, UITextFieldDelegate {
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
-                let location = placemark?.location
                 self.userSubLocality = placemark?.subLocality
                 self.userLocality = placemark?.locality
-                print(self.userLocality)
-//                let coordinate = location?.coordinate
-//                self.zipLat = coordinate!.latitude
-//                self.zipLon = coordinate!.longitude
-
-                return
+                print("\((self.userLocality)!) = userLocality in fG")
+                
+                let location = placemark?.location
+                let coordinate = location?.coordinate
+                self.zipLat = coordinate!.latitude
+                self.zipLon = coordinate!.longitude
+                
             }
         })
     }
+    
+
+    
     
     
     
