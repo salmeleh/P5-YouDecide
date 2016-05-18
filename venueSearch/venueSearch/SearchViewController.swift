@@ -128,10 +128,10 @@ class SearchView: UIViewController, UITextFieldDelegate {
     //MARK: forwardGeocoding
     //via http://mhorga.org/2015/08/14/geocoding-in-ios.html
     func forwardGeocoding(address: String) {
+        
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
                 self.launchAlertController(String(error))
-                return
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
@@ -145,6 +145,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
                 self.zipLon = coordinate!.longitude
                 
             }
+
         })
     }
     

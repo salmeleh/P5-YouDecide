@@ -127,7 +127,8 @@ class VenueCalendarTableView: UITableViewController, NSFetchedResultsControllerD
                 self.loadingWheel.stopAnimating()
                 self.launchAlertController(error!)
             })
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(false, completion: nil)
+
         }
     }
 
