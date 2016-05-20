@@ -27,83 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2067EF961CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 63F803A31AB87A8200E4DEE1;
-			remoteInfo = PMKiOS;
-		};
-		2067EF981CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 63F803CC1AB89A0F00E4DEE1;
-			remoteInfo = PMKOSX;
-		};
-		2067EF9A1CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 63CD9A621BB102EE008D916F;
-			remoteInfo = PMKwatchOS;
-		};
-		2067EF9C1CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 43EF78A61C5AA12B00BCD8FB;
-			remoteInfo = PMKtvOS;
-		};
-		2067EF9E1CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6388E1A21AD315F90074D85B;
-			remoteInfo = PMKTests;
-		};
-		2067EFA01CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 63533B331AE57A9300C10972;
-			remoteInfo = PMKAPlusTests;
-		};
-		2067EFA21CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 638E0ED51AEF16530052E28F;
-			remoteInfo = PMKiOSCategoryTests;
-		};
-		2067EFA41CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 63CA14571AE9FBD000223904;
-			remoteInfo = PMKOSXCategoryTests;
-		};
-		2067EFA61CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 638CDF031AEE734B0023A543;
-			remoteInfo = PMKiOSUITestsHost;
-		};
-		2067EFA81CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 63EBEAC51B6151AA0097FA42;
-			remoteInfo = PMKiOSUITests;
-		};
-		2067EFAA1CEDF53B00E9FEAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 17470C5A1CBF8A9D004FBBB8;
-			remoteInfo = PMKDefaultDispatchQueueTests;
-		};
 		20B802F91CDA42E900268C12 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20B802DC1CDA42E800268C12 /* Project object */;
@@ -142,7 +65,6 @@
 		202DB5231CE36D54004D9A06 /* VenueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
 		204EE6CD1CECBF44003F3714 /* VenueCalendarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCalendarTableViewCell.swift; sourceTree = "<group>"; };
 		205E239B1CE26C37005FB1C8 /* VenueCalendarTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueCalendarTableView.swift; sourceTree = "<group>"; };
-		2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PromiseKit.xcodeproj; path = "PromiseKit-master/PromiseKit.xcodeproj"; sourceTree = "<group>"; };
 		20B802E41CDA42E900268C12 /* venueSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = venueSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B802E71CDA42E900268C12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20B802E91CDA42E900268C12 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -196,28 +118,9 @@
 			name = SongKick;
 			sourceTree = "<group>";
 		};
-		2067EF891CEDF53A00E9FEAF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2067EF971CEDF53B00E9FEAF /* PromiseKit.framework */,
-				2067EF991CEDF53B00E9FEAF /* PromiseKit.framework */,
-				2067EF9B1CEDF53B00E9FEAF /* PromiseKit.framework */,
-				2067EF9D1CEDF53B00E9FEAF /* PromiseKit.framework */,
-				2067EF9F1CEDF53B00E9FEAF /* PMKTests.xctest */,
-				2067EFA11CEDF53B00E9FEAF /* PMKAPlusTests.xctest */,
-				2067EFA31CEDF53B00E9FEAF /* PMKiOSCategoryTests.xctest */,
-				2067EFA51CEDF53B00E9FEAF /* PMKOSXCategoryTests.xctest */,
-				2067EFA71CEDF53B00E9FEAF /* PMKiOSUITestsHost.app */,
-				2067EFA91CEDF53B00E9FEAF /* PMKiOSUITests.xctest */,
-				2067EFAB1CEDF53B00E9FEAF /* PMKDefaultDispatchQueueTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		20B802DB1CDA42E800268C12 = {
 			isa = PBXGroup;
 			children = (
-				2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */,
 				20B802E61CDA42E900268C12 /* venueSearch */,
 				20B802FB1CDA42E900268C12 /* venueSearchTests */,
 				20B803061CDA42E900268C12 /* venueSearchUITests */,
@@ -372,12 +275,6 @@
 			mainGroup = 20B802DB1CDA42E800268C12;
 			productRefGroup = 20B802E51CDA42E900268C12 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 2067EF891CEDF53A00E9FEAF /* Products */;
-					ProjectRef = 2067EF881CEDF53A00E9FEAF /* PromiseKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				20B802E31CDA42E900268C12 /* venueSearch */,
@@ -386,86 +283,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		2067EF971CEDF53B00E9FEAF /* PromiseKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PromiseKit.framework;
-			remoteRef = 2067EF961CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EF991CEDF53B00E9FEAF /* PromiseKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PromiseKit.framework;
-			remoteRef = 2067EF981CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EF9B1CEDF53B00E9FEAF /* PromiseKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PromiseKit.framework;
-			remoteRef = 2067EF9A1CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EF9D1CEDF53B00E9FEAF /* PromiseKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = PromiseKit.framework;
-			remoteRef = 2067EF9C1CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EF9F1CEDF53B00E9FEAF /* PMKTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PMKTests.xctest;
-			remoteRef = 2067EF9E1CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EFA11CEDF53B00E9FEAF /* PMKAPlusTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PMKAPlusTests.xctest;
-			remoteRef = 2067EFA01CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EFA31CEDF53B00E9FEAF /* PMKiOSCategoryTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PMKiOSCategoryTests.xctest;
-			remoteRef = 2067EFA21CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EFA51CEDF53B00E9FEAF /* PMKOSXCategoryTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PMKOSXCategoryTests.xctest;
-			remoteRef = 2067EFA41CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EFA71CEDF53B00E9FEAF /* PMKiOSUITestsHost.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = PMKiOSUITestsHost.app;
-			remoteRef = 2067EFA61CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EFA91CEDF53B00E9FEAF /* PMKiOSUITests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PMKiOSUITests.xctest;
-			remoteRef = 2067EFA81CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2067EFAB1CEDF53B00E9FEAF /* PMKDefaultDispatchQueueTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PMKDefaultDispatchQueueTests.xctest;
-			remoteRef = 2067EFAA1CEDF53B00E9FEAF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		20B802E21CDA42E900268C12 /* Resources */ = {
