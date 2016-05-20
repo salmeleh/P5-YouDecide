@@ -52,9 +52,6 @@ class SearchView: UIViewController, UITextFieldDelegate {
 
         //add tap recognizer
         self.addKeyboardDismissRecognizer()
-        
-//        //subscribe to keyboard events so we can adjust the view to show hidden controls
-//        self.subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -62,9 +59,6 @@ class SearchView: UIViewController, UITextFieldDelegate {
         
         //remove tap recognizer
         self.removeKeyboardDismissRecognizer()
-        
-//        //nsubscribe to all keyboard events
-//        self.unsubscribeToKeyboardNotifications()
     }
 
     
@@ -146,6 +140,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             completionHandler(error: "no userLocality yet")
             if error != nil {
+                self.loadingWheel.stopAnimating()
                 self.launchAlertController(String(error))
             }
             if placemarks?.count > 0 {
