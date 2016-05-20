@@ -66,19 +66,7 @@ class VenueCalendarTableView: UITableViewController, NSFetchedResultsControllerD
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
-    
-    
-//    //MARK: fetchAll
-//    func fetchAllEvents() -> [Event] {
-//        let fetchRequest = NSFetchRequest(entityName: "Event")
-//        do {
-//            return try sharedContext.executeFetchRequest(fetchRequest) as! [Event]
-//        } catch let error as NSError {
-//            print("Error in fetchAllVenues(): \(error)")
-//            return [Event]()
-//        }
-//    }
-    
+        
     
     
     // MARK: UITableViewController Methods

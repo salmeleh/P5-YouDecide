@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension SongKickClient {
     
@@ -15,6 +16,7 @@ extension SongKickClient {
     struct Constants {
         static let songKickBaseURL: String = "http://api.songkick.com/api/3.0/"
         static let apiKey: String = "hI5oKbHPO5Z1U8FY"
+        static let skPink: UIColor = UIColor(red: 248/255, green: 0, blue: 70/255, alpha: 1)
     }
     
     //MARK: Methods

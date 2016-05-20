@@ -144,6 +144,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
         })
         
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+            completionHandler(error: "no userLocality yet")
             if error != nil {
                 self.launchAlertController(String(error))
             }
@@ -152,7 +153,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
                 self.userSubLocality = placemark?.subLocality
                 self.userLocality = placemark?.locality
                 print("\((self.userLocality)!) = userLocality in fG")
-                
+                completionHandler(error: nil)
                 let location = placemark?.location
                 let coordinate = location?.coordinate
                 self.zipLat = coordinate!.latitude
@@ -161,7 +162,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
             }
 
         })
-        completionHandler(error: nil)
+        
     }
     
 
