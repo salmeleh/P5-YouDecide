@@ -97,14 +97,14 @@ class SearchView: UIViewController, UITextFieldDelegate {
             return
         }
         
-        forwardGeocoding(zipTextField.text!)
+        forwardGeocoding(zipTextField.text!, completionHandler: handlerForForwardGeocoding)
+
+//
+//        if userLocality == "" {
+//            launchAlertController("press search again")
+//            return
+//        }
         
-        if userLocality == "" {
-            launchAlertController("press search again")
-            return
-        }
-        
-        performSegueWithIdentifier("ShowVenueTableVC", sender: userLocality)
 
         
     }
@@ -120,13 +120,28 @@ class SearchView: UIViewController, UITextFieldDelegate {
     }
     
     
+    func handlerForForwardGeocoding(error: String?) -> Void {
+        if error == nil {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.loadingWheel.stopAnimating()
+            })
+            performSegueWithIdentifier("ShowVenueTableVC", sender: userLocality)
+        }
+        
+    }
+    
+    
     
     
     
     
     //MARK: forwardGeocoding
     //via http://mhorga.org/2015/08/14/geocoding-in-ios.html
-    func forwardGeocoding(address: String) {
+    func forwardGeocoding(address: String, completionHandler: (error: String?) -> Void ) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.loadingWheel.hidden = false
+            self.loadingWheel.startAnimating()
+        })
         
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
@@ -146,6 +161,7 @@ class SearchView: UIViewController, UITextFieldDelegate {
             }
 
         })
+        completionHandler(error: nil)
     }
     
 
