@@ -478,7 +478,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = salmeleh.venueSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1bfbea09-d4ce-4b5f-9365-8c7c39127584";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -492,7 +492,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = salmeleh.venueSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1bfbea09-d4ce-4b5f-9365-8c7c39127584";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
